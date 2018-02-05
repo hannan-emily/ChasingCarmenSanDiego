@@ -57,45 +57,43 @@ canvas.height = window.innerHeight;
 // }];
 
 // create circles to draw
-const circles = [
+const questionBoxes = [
   {
     x: 40,
     y: 40,
-    radius: 10,
     color: 'rgb(255,0,0)'
   },
   {
-    x: 70,
-    y: 70,
-    radius: 10,
+    x: 140,
+    y: 140,
     color: 'rgb(0,255,0)'
   }
 ];
 
-// draw circles
-circles.forEach(circle => {
-  ctx.beginPath();
-  ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
-  ctx.fillStyle = circle.color;
-  ctx.fill();
+//draw boxes
+questionBoxes.forEach(questionBox => {
+  ctx.fillStyle = questionBox.color;
+  ctx.fillRect(questionBox.x, questionBox.y, 100, 100)
 });
 
+//add event listener to click to track where the mouse position is on the canvas
 canvas.addEventListener('click', (e) => {
   const pos = {
     x: e.clientX,
     y: e.clientY
   };
 
-function isIntersect(point, circle) {
-  return Math.sqrt((point.x-circle.x) ** 2 + (point.y - circle.y) ** 2) < circle.radius;
+//tracking intersection - old code
+function isIntersect(point, questionBox) {
+  return Math.sqrt((point.x-questionBox.x) ** 2 + (point.y - questionBox.y) ** 2) < circle.radius;
 }
 
+//action for the questionbox click event
+questionBoxes.forEach(questionBox => {
+  if (pos, questionBox) {
+    console.log('click on question box: ' + questionBoxes.id);
+  }
 
-
-  circles.forEach(circle => {
-    if (isIntersect(pos, circle)) {
-      console.log('click on circle: ' + circle.id);
-    }
   });
 });
 
@@ -114,7 +112,7 @@ function isIntersect(point, circle) {
 //
 //   ctx.fillStyle = questionCrate1.color;
 //   ctx.fillRect(questionCrate1.x, questionCrate1.y, 100, 100)
-// };
+// // };
 //
 // var clickTest = function() {
 //   console.log('clicked');
