@@ -55,24 +55,73 @@ canvas.height = window.innerHeight;
 //   correctAnswer: 'Turkey',
 //   incorrectChoices: []
 // }];
-//
-var questionCrate1 = {
-  x: 300, //coordinates reference a point on a canvas, not a size
-  y: 300, //coodinates
-  color: "green"
+
+// create circles to draw
+const circles = [
+  {
+    x: 40,
+    y: 40,
+    radius: 10,
+    color: 'rgb(255,0,0)'
+  },
+  {
+    x: 70,
+    y: 70,
+    radius: 10,
+    color: 'rgb(0,255,0)'
+  }
+];
+
+// draw circles
+circles.forEach(circle => {
+  ctx.beginPath();
+  ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI, false);
+  ctx.fillStyle = circle.color;
+  ctx.fill();
+});
+
+canvas.addEventListener('click', (e) => {
+  const pos = {
+    x: e.clientX,
+    y: e.clientY
+  };
+
+function isIntersect(point, circle) {
+  return Math.sqrt((point.x-circle.x) ** 2 + (point.y - circle.y) ** 2) < circle.radius;
 }
 
-var animationLoop = function() {
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  console.log("draw!");
 
-  ctx.fillStyle = questionCrate1.color;
-  ctx.fillRect(questionCrate1.x, questionCrate1.y, 100, 100)
-};
-
-setInterval(animationLoop, 100);
-
-document.addEventListener('DOMContentLoaded', function(event) {
-  
+  circles.forEach(circle => {
+    if (isIntersect(pos, circle)) {
+      console.log('click on circle: ' + circle.id);
+    }
+  });
 });
+
+
+//
+// var questionCrate1 = {
+//   x: 300, //coordinates reference a point on a canvas, not a size
+//   y: 300, //coodinates
+//   color: "green"
+// }
+//
+// var animationLoop = function() {
+//
+//   ctx.clearRect(0, 0, canvas.width, canvas.height);
+//   console.log("draw!");
+//
+//   ctx.fillStyle = questionCrate1.color;
+//   ctx.fillRect(questionCrate1.x, questionCrate1.y, 100, 100)
+// };
+//
+// var clickTest = function() {
+//   console.log('clicked');
+// };
+//
+// setInterval(animationLoop, 100);
+//
+// document.addEventListener('DOMContentLoaded', function(event) {
+//   window.addEventListener('keydown', moveBlock);  //add event listner to the browser window itself for any key press
+// });
