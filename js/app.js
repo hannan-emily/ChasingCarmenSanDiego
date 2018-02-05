@@ -1,5 +1,3 @@
-console.log('yep js is working');
-
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext('2d');
 
@@ -21,7 +19,7 @@ canvas.height = window.innerHeight;
 //   incorrectChoices: []
 // }, {
 //   question: "Right after pulling out of this train station, the second engineer on the The Fairy Queen steam locomotive thought he saw Carmen, attempting to pry engine parts loose. If Carmen really was on the world's oldest operating train, where were they?"
-//   incorrectChoices: 'Alwar, India',
+//   correctAnswer: 'Alwar, India',
 // }, {
 //   question: "A former army captain thought he saw Carmen atttemping to steal plans from the control area of the Hellisheidarvirkjun geothermal power plant. What main area does this power?"
 //   correctAnswer: 'Helsinki',
@@ -57,17 +55,67 @@ canvas.height = window.innerHeight;
 // }];
 
 // create circles to draw
-const questionBoxes = [
+var questionBoxes = [
   {
     x: 40,
     y: 40,
     color: 'rgb(255,0,0)'
   },
   {
-    x: 140,
+    x: 600,
+    y: 10,
+    color: 'rgb(255,0,0)'
+  },
+  {
+    x: 250,
     y: 140,
-    color: 'rgb(0,255,0)'
-  }
+    color: 'rgb(255,0,0)'
+  },
+  {
+    x: 400,
+    y: 400,
+    color: 'rgb(255,0,0)'
+  },
+  {
+    x: 550,
+    y: 650,
+    color: 'rgb(255,0,0)'
+  },
+  {
+    x: 850,
+    y: 500,
+    color: 'rgb(255,0,0)'
+  },
+  {
+    x: 900,
+    y: 40,
+    color: 'rgb(255,0,0)'
+  },
+  {
+    x: 600,
+    y: 350,
+    color: 'rgb(255,0,0)'
+  },
+  {
+    x: 1000,
+    y: 700,
+    color: 'rgb(255,0,0)'
+  },
+  {
+    x: 10,
+    y: 700,
+    color: 'rgb(255,0,0)'
+  },
+  {
+    x: 100,
+    y: 500,
+    color: 'rgb(255,0,0)'
+  },
+  {
+    x: 1010,
+    y: 300,
+    color: 'rgb(255,0,0)'
+  },
 ];
 
 //draw boxes
@@ -78,7 +126,7 @@ questionBoxes.forEach(questionBox => {
 
 //add event listener to click to track where the mouse position is on the canvas
 canvas.addEventListener('click', (e) => {
-  const pos = {
+  var pos = {
     x: e.clientX,
     y: e.clientY
   };
@@ -96,30 +144,3 @@ questionBoxes.forEach(questionBox => {
 
   });
 });
-
-
-//
-// var questionCrate1 = {
-//   x: 300, //coordinates reference a point on a canvas, not a size
-//   y: 300, //coodinates
-//   color: "green"
-// }
-//
-// var animationLoop = function() {
-//
-//   ctx.clearRect(0, 0, canvas.width, canvas.height);
-//   console.log("draw!");
-//
-//   ctx.fillStyle = questionCrate1.color;
-//   ctx.fillRect(questionCrate1.x, questionCrate1.y, 100, 100)
-// // };
-//
-// var clickTest = function() {
-//   console.log('clicked');
-// };
-//
-// setInterval(animationLoop, 100);
-//
-// document.addEventListener('DOMContentLoaded', function(event) {
-//   window.addEventListener('keydown', moveBlock);  //add event listner to the browser window itself for any key press
-// });
