@@ -155,17 +155,17 @@ canvas.addEventListener('click', (e) => {
     x: e.clientX,
     y: e.clientY
   };
-  
+
   //action for the questionbox click event
   questionBoxes.forEach(function(box) {
     var top = box.y;
-    var bottom = (box.y - 100);
+    var bottom = (box.y + 100);
     var rightSide = (box.x + 100);
     var leftSide = box.x;
-    if ((pos.x < leftSide) ||
-       (pos.x > rightSide) ||
-       (pos.y < top) ||
-       (pos.y > bottom)) {
+    if ((pos.x > leftSide) &&
+       (pos.x < rightSide) &&
+       (pos.y > top) &&
+       (pos.y < bottom)) {
          console.log('box');
        }
        else {
