@@ -6,3 +6,67 @@ body {
 canvas {
   background: gray;
 }
+
+//overlay
+
+
+/* #infoButton{
+	background-color: #D2F92A;
+	border-radius: 10px;
+	font-family: 'Press Start 2P', cursive;
+	padding: 3px 4px;
+	border: 3px #E9FA9E outset;
+	font-size: 8px;
+}
+
+#infoButton:hover {
+	cursor: pointer;
+	border: 3px #B1C45F inset;
+	background-color: #C1DC47;
+}
+
+.icon.info {
+	filter: none;
+} */
+
+.question-overlay {
+	visibility: hidden;
+	position: absolute;
+	background-color: #f9b82a;
+	border: 3px outset grey;
+	width: 180px;
+	height: 360px;
+	top: 30px;
+	left: 300px;
+	margin: 0 auto;
+	border-radius: 20px;
+}
+
+.question-overlay.active, {
+	/*displays info when "active" class is present*/
+	visibility: visible;
+	text-align: center;
+}
+
+.question-content, {
+	/*Hides info content when there is no "active" class */
+	visibility: hidden;
+}
+
+.question-content.active, {
+	/*Shows info content when "active" class is present */
+	visibility: visible;
+	margin: 10px;
+}
+
+#question-close, {
+	padding: 5px 15px;
+	background-color: white;
+	border: 4px outset grey;
+	border-radius: 7px;
+	position: absolute;
+	bottom: 15px;
+	left: 42px;
+}
+
+//overlay

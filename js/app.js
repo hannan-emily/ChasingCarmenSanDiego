@@ -4,6 +4,21 @@ var ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+
+//overlay modal
+var openOverlay = function() {
+  $(".info-overlay, .info-content").addClass("active");
+  console.log('openOverlay function ran');
+};
+
+//removes the "active" class to .info and .info-content when the "Close" button is clicked
+// var closeOverlay = function() {
+//   $(".info-overlay, .info-content").removeClass("active");
+// };
+
+
+
+
 //12 questions, each with 1 correct answer
 var questions = [{
   question: "An optimistic but unsuccessful metal detectorist spotted someone who looked like Carmen entering the Cave of the Crystals, home to some of the largest salt crystals in the world. If she is stealing crystals, where is she?",
@@ -11,26 +26,26 @@ var questions = [{
   incorrectChoices: []
 },
 {
-  question: "A bored security guard briefly spotted a woman clutching blueprints at the Southwest corner of the Cristo Redentor statue. Where did this sighting happen?"
+  question: "A bored security guard briefly spotted a woman clutching blueprints at the Southwest corner of the Cristo Redentor statue. Where did this sighting happen?",
   correctAnswer: 'Sao Paolo',
   incorrectChoices: []
 },
 {
-  question: "While attempting to visit all 446 bridges in 1 day, an off duty firefighter may have seen Carmen trying to steal the historic nuts and bolts off the Liberty Bridge. Where was this incident?"
+  question: "While attempting to visit all 446 bridges in 1 day, an off duty firefighter may have seen Carmen trying to steal the historic nuts and bolts off the Liberty Bridge. Where was this incident?",
   correctAnswer: 'Pittsburgh',
   incorrectChoices: []
 },
 {
-  question: "Right after pulling out of this train station, the second engineer on the The Fairy Queen steam locomotive thought he saw Carmen, while she attempted to pry historic engine parts loose. If Carmen really was on the world's oldest operating train, where was this station?"
+  question: "Right after pulling out of this train station, the second engineer on the The Fairy Queen steam locomotive thought he saw Carmen, while she attempted to pry historic engine parts loose. If Carmen really was on the world's oldest operating train, where was this station?",
   correctAnswer: 'Alwar, India',
 },
 {
-  question: "A former army captain thought he saw Carmen atttemping to steal plans from the control area of the Hellisheidarvirkjun geothermal power plant. What does this power?"
+  question: "A former army captain thought he saw Carmen atttemping to steal plans from the control area of the Hellisheidarvirkjun geothermal power plant. What does this power?",
   correctAnswer: 'Helsinki',
   incorrectChoices: []
 },
 {
-  question: "Both the United Kingdom and Argentina claim this place as theirs. A fishmonger might have spotted Carmen on a crumbling dock, attempting to fence 1 ton of whale blubber. Where was she trying to make a deal?".
+  question: "Both the United Kingdom and Argentina claim this place as theirs. A fishmonger might have spotted Carmen on a crumbling dock, attempting to fence 1 ton of whale blubber. Where was she trying to make a deal?",
   correctAnswer: 'Falkland Islands',
   incorrectChoices: []
 },
@@ -64,6 +79,7 @@ var questions = [{
   correctAnswer: 'Turkey',
   incorrectChoices: []
 }];
+
 
 // (clickable) boxes i'll use to apply a question to each
 var questionBoxes = [
@@ -142,14 +158,15 @@ canvas.addEventListener('click', (e) => {
     y: e.clientY
   };
 
-  //tracking intersection - old code
-  function isIntersect(point, questionBox) {
-    return Math.sqrt((point.x-questionBox.x) ** 2 + (point.y - questionBox.y) ** 2) < circle.radius;
-  }
+  // //tracking intersection - old code
+  // function isIntersect(point, questionBox) {
+  //   return Math.sqrt((point.x-questionBox.x) ** 2 + (point.y - questionBox.y) ** 2) < questionBox.radius;
+  // }
 
   //action for the questionbox click event
   questionBoxes.forEach(questionBox => {
     if (pos, questionBox) {
+      openOverlay();
       console.log('click on question box: ' + questionBoxes.id);
     }
   });
