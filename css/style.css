@@ -7,10 +7,7 @@ canvas {
   background: gray;
 }
 
-//overlay
-
-
-/* #infoButton{
+#infoButton{
 	background-color: #D2F92A;
 	border-radius: 10px;
 	font-family: 'Press Start 2P', cursive;
@@ -27,9 +24,9 @@ canvas {
 
 .icon.info {
 	filter: none;
-} */
+}
 
-.question-overlay {
+.info-overlay, .continue-screen {
 	visibility: hidden;
 	position: absolute;
 	background-color: #f9b82a;
@@ -37,36 +34,39 @@ canvas {
 	width: 180px;
 	height: 360px;
 	top: 30px;
-	left: 300px;
+	left: 107px;
 	margin: 0 auto;
 	border-radius: 20px;
 }
 
-.question-overlay.active, {
+.info-overlay.active, .continue-screen.active {
 	/*displays info when "active" class is present*/
 	visibility: visible;
 	text-align: center;
 }
 
-.question-content, {
+.info-content, .continue-content {
 	/*Hides info content when there is no "active" class */
 	visibility: hidden;
 }
 
-.question-content.active, {
+.info-content.active, .continue-content.active {
 	/*Shows info content when "active" class is present */
 	visibility: visible;
 	margin: 10px;
 }
 
-#question-close, {
+#info-close, #continue-button {
 	padding: 5px 15px;
 	background-color: white;
 	border: 4px outset grey;
 	border-radius: 7px;
+	font-family: 'Press Start 2P', cursive;
 	position: absolute;
 	bottom: 15px;
 	left: 42px;
 }
 
-//overlay
+#continue-button {
+	margin-left: 10px;
+}

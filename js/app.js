@@ -3,17 +3,17 @@ var ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+// When the user clicks on the button, open the modal
+//appends an "active" class to .info and .info-content when the "Open" button is clicked
+var openModal = function(){
+ $(".info-overlay, .info-content").addClass("active");
+};
 
-// //overlay modal
-// var openOverlay = function() {
-//   $(".info-overlay, .info-content").addClass("active");
-//   console.log('openOverlay function ran');
-// };
-//
-// removes the "active" class to .info and .info-content when the "Close" button is clicked
-// var closeOverlay = function() {
-//   $(".info-overlay, .info-content").removeClass("active");
-// };
+//removes the "active" class to .info and .info-content when the "Close" button is clicked
+var closeModal = function(){
+ $(".info-overlay, .info-content").removeClass("active");
+};
+
 
 //12 questions, each with 1 correct answer
 var questions = [{
@@ -141,7 +141,7 @@ var questionBoxes = [
   },
 ];
 
-//canvas functionality - draw the boxes, add click listeners, execute these functions
+//canvas functions below
 
 //draw boxes
 questionBoxes.forEach(questionBox => {
@@ -157,7 +157,7 @@ canvas.addEventListener('click', (e) => {
   };
 
   //action for the questionbox click event
-  questionBoxes.forEach(function(box) {
+  questionBoxes.forEach(function(box, index) {
     var top = box.y;
     var bottom = (box.y + 100);
     var rightSide = (box.x + 100);
@@ -167,9 +167,9 @@ canvas.addEventListener('click', (e) => {
        (pos.y > top) &&
        (pos.y < bottom)) {
          console.log('box');
-       }
-       else {
-         console.log('no box');
-       }
+         console.log(questionBoxes[index].y);
+         openModal ();
+
+      }
   });
 });
