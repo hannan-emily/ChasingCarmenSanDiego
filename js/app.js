@@ -4,20 +4,16 @@ var ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-
-//overlay modal
-var openOverlay = function() {
-  $(".info-overlay, .info-content").addClass("active");
-  console.log('openOverlay function ran');
-};
-
-//removes the "active" class to .info and .info-content when the "Close" button is clicked
+// //overlay modal
+// var openOverlay = function() {
+//   $(".info-overlay, .info-content").addClass("active");
+//   console.log('openOverlay function ran');
+// };
+//
+// removes the "active" class to .info and .info-content when the "Close" button is clicked
 // var closeOverlay = function() {
 //   $(".info-overlay, .info-content").removeClass("active");
 // };
-
-
-
 
 //12 questions, each with 1 correct answer
 var questions = [{
@@ -145,6 +141,8 @@ var questionBoxes = [
   },
 ];
 
+//canvas functionality - draw the boxes, add click listeners, execute these functions
+
 //draw boxes
 questionBoxes.forEach(questionBox => {
   ctx.fillStyle = questionBox.color;
@@ -157,17 +155,21 @@ canvas.addEventListener('click', (e) => {
     x: e.clientX,
     y: e.clientY
   };
-
-  // //tracking intersection - old code
-  // function isIntersect(point, questionBox) {
-  //   return Math.sqrt((point.x-questionBox.x) ** 2 + (point.y - questionBox.y) ** 2) < questionBox.radius;
-  // }
-
+  
   //action for the questionbox click event
-  questionBoxes.forEach(questionBox => {
-    if (pos, questionBox) {
-      openOverlay();
-      console.log('click on question box: ' + questionBoxes.id);
-    }
+  questionBoxes.forEach(function(box) {
+    var top = box.y;
+    var bottom = (box.y - 100);
+    var rightSide = (box.x + 100);
+    var leftSide = box.x;
+    if ((pos.x < leftSide) ||
+       (pos.x > rightSide) ||
+       (pos.y < top) ||
+       (pos.y > bottom)) {
+         console.log('box');
+       }
+       else {
+         console.log('no box');
+       }
   });
 });
