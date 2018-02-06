@@ -6,13 +6,13 @@ canvas.height = window.innerHeight;
 // When the user clicks on the button, open the modal
 //appends an "active" class to .info and .info-content when the "Open" button is clicked
 var openModal = function(){
- $(".info-overlay, .info-content").addClass("active");
+ $(".question-overlay, .info-content").addClass("active");
 };
 
-//removes the "active" class to .info and .info-content when the "Close" button is clicked
-var closeModal = function(){
- $(".info-overlay, .info-content").removeClass("active");
-};
+//removes the "active" class off the modal when the "Close" button is clicked
+$("#info-close, .question-overlay").on("click", function(){
+  $(".question-overlay, .info-content").removeClass("active");
+});
 
 
 //12 questions, each with 1 correct answer
@@ -169,7 +169,6 @@ canvas.addEventListener('click', (e) => {
          console.log('box');
          console.log(questionBoxes[index].y);
          openModal ();
-
       }
   });
 });

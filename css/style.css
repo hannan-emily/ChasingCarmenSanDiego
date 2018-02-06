@@ -26,7 +26,7 @@ canvas {
 	filter: none;
 }
 
-.info-overlay, .continue-screen {
+.question-overlay, .continue-screen {
 	visibility: hidden;
 	position: absolute;
 	background-color: #f9b82a;
@@ -39,7 +39,7 @@ canvas {
 	border-radius: 20px;
 }
 
-.info-overlay.active, .continue-screen.active {
+.question-overlay.active, .continue-screen.active {
 	/*displays info when "active" class is present*/
 	visibility: visible;
 	text-align: center;
