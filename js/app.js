@@ -3,43 +3,32 @@ var ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-// When the user clicks on the button, open the modal
-//appends an "active" class to .info and .question-content when the "Open" button is clicked
-var openModal = function(){
- $(".question-overlay, .question-content").addClass("active");
-};
 
-//removes the "active" class off the modal when the "Close" button is clicked
-$("#info-close, .question-overlay").on("click", function(){
-  $(".question-overlay, .question-content").removeClass("active");
-});
-
-
-//12 questions, each with 1 correct answer
-var questions = [{
-  question: "An optimistic but unsuccessful metal detectorist spotted someone who looked like Carmen entering the Cave of the Crystals, home to some of the largest salt crystals in the world. If she is stealing crystals, where is she?",
+//12 questions, each with correct and incorrect answers assigned
+var questionArray = [{
+  question: "An optimistic but unsuccessful metal detectorist spotted someone who looked like Carmen entering 'The Cave of the Crystals', home to the world's of the largest salt crystals. If she is stealing crystals, where is she?",
   correctAnswer: 'Naica, Mexico',
   incorrectAnswers: ['Ashgabat, Turkmenistan','Falkland Islands','Pittsburgh, United States']
 },
 {
-  question: "A bored security guard briefly spotted a woman clutching blueprints at the Southwest corner of the Cristo Redentor statue. Where did this sighting happen?",
+  question: "A bored security guard briefly spotted a woman clutching blueprints at the southwest corner of the Cristo Redentor statue. Where did this sighting happen?",
   correctAnswer: 'Sao Paolo, Brazil',
   incorrectAnswers: ['Naica, Mexico','Geneva, Switzerland','Falkland Islands']
 },
 {
-  question: "While attempting to visit all 446 bridges in 1 day, an off duty firefighter may have seen Carmen trying to steal the historic nuts and bolts off the Liberty Bridge. Where was this incident?",
+  question: "While attempting to visit all 446 bridges in 1 day, an off duty firefighter may have seen Carmen trying to steal the historic bolts off The Liberty Bridge. Where was this incident?",
   correctAnswer: 'Pittsburgh, United States',
-  incorrectAnswers: ['Okrug, Russia','Moscow, Russia','Ashgabat, Turkmenistan']
+  incorrectAnswers: ['Okrug, Russia','Sao Paolo, Brazil','Ashgabat, Turkmenistan']
 },
 {
-  question: "Right after pulling out of this train station, the second engineer on the The Fairy Queen steam locomotive thought he saw Carmen, while she attempted to pry historic engine parts loose. If Carmen really was on the world's oldest operating train, where was this station?",
+  question: "Right after pulling out of this train station, the second engineer on the world's oldest steam locomotive, 'The Fairy Queen', thought he saw Carmen attempting to pry valuable engine parts loose. If Carmen really was stealing parts, what city did that train just leave?",
   correctAnswer: 'Alwar, India',
   incorrectAnswers: ['Reykjavik, Iceland','Naica, Mexico','Okrug, Russia']
 },
 {
-  question: "A former army captain thought he saw Carmen atttemping to steal plans from the control area of the Hellisheidarvirkjun geothermal power plant. What does this power?",
+  question: "A former army captain thought he saw Carmen atttemping to steal plans from the control room of the Hellisheidarvirkjun geothermal power plant. What city does this power?",
   correctAnswer: 'Reykjavik, Iceland',
-  incorrectAnswers: ['Geneva, Switzerland','Ashgabat, Turkmenistan','Falkland Islands']
+  incorrectAnswers: ['Geneva, Switzerland','Ashgabat, Turkmenistan','Moscow, Russia']
 },
 {
   question: "This southern hemisphere locale is still officially claimed by two different countries. A fishmonger might have spotted Carmen attempting to fence 1 ton of whale blubber. Where was she trying to make a deal?",
@@ -57,7 +46,7 @@ var questions = [{
   incorrectAnswers: ['Nevsehir Province, Turkey','Pittsburgh, United States','Sao Paolo, Brazil']
 },
 {
-  question: "While inspecting a leaking pipe deep underground in the Hadron Collider, a physiscit may have seen Carmen shuffling away with several laser scopes. What city were they both underneath?"
+  question: "While inspecting a leaking pipe deep underground in the Hadron Collider, a physiscit may have seen Carmen shuffling away with several laser scopes. What city were they both underneath?",
   correctAnswer: 'Geneva, Switzerland',
   incorrectAnswers: ['Alwar, India','Reykjavik, Iceland','Moscow, Russia']
 },
@@ -142,6 +131,27 @@ var questionBoxes = [
   },
 ];
 
+//display selected elements for this question
+var displayQuestion = function() {
+  $("#currentQuestion").text(questionArray[0].question); //replace the text in html field with THIS question text
+  $("#answer" + 1 + "Text").html(questionArray[0].correctAnswer);
+  // questionArray[0].answers.forEach(function(item, index) {
+  //   $("#answer" + (index + 1) + "Radio").val(item);
+  //   $("#answer" + (index + 1) + "Text").html(item);
+  };
+
+//modal for the question array. this appends an "active" class to .question-overlay and .question-content when the "Open" button is clicked
+var openModal = function(){
+ $(".question-overlay, .question-content").addClass("active");
+ displayQuestion(); //call the question data& display in this modal
+};
+
+//removes the "active" class off the modal when the "Close" button is clicked
+$("#info-close").on("click", function(){
+  $(".question-overlay, .question-content").removeClass("active");
+});
+
+
 //canvas functions below
 
 //draw boxes
@@ -167,8 +177,6 @@ canvas.addEventListener('click', (e) => {
        (pos.x < rightSide) &&
        (pos.y > top) &&
        (pos.y < bottom)) {
-         console.log('box');
-         console.log(questionBoxes[index].y);
          openModal ();
       }
   });
