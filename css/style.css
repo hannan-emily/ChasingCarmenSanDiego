@@ -31,11 +31,11 @@ canvas {
 	position: absolute;
 	background-color: #f9b82a;
 	border: 3px outset grey;
-	width: 180px;
-	height: 360px;
-	top: 30px;
-	left: 107px;
+	width: 50%;
+	height: 50%;
+	top: 50px;
 	margin: 0 auto;
+  align: center;
 	border-radius: 20px;
 }
 
@@ -45,12 +45,12 @@ canvas {
 	text-align: center;
 }
 
-.info-content, .continue-content {
+.question-content, .continue-content {
 	/*Hides info content when there is no "active" class */
 	visibility: hidden;
 }
 
-.info-content.active, .continue-content.active {
+.question-content.active, .continue-content.active {
 	/*Shows info content when "active" class is present */
 	visibility: visible;
 	margin: 10px;

@@ -12,11 +12,21 @@
   </div>
 
   <div class='question-overlay'>
-		<div class='info-content'>
-			<h2>How To Play</h2>
-			<p>Use the arrow keys to move Froggo and get to the other side of the river safely! Use lilypads and logs to safely traverse the water, but watch out for alligators and poorly timed jumps!</p>
-			<br>
-			<!-- <img src='./img/froggo.gif' width=50 height=50> -->
+		<div class='question-content'>
+      <h1 class="questionNumber" id="currentQuestion">Question</h1>
+      <form id="question-form">
+        <input type="radio" class="rad" id="radioButton1" name="answers" value="">
+        <label for="radioButton1"></label>
+        <br />
+        <input type="radio" class="rad" id="radioButton2" name="answers" value="">
+        <label for="radioButton2"></label>
+        <br />
+        <input type="radio" class="rad" id="radioButton3" name="answers" value="">
+        <label for="radioButton3"></label>
+        <br />
+        <input type="radio" class="rad" id="radioButton4" name="answers" value="">
+        <label for="radioButton4"></label>
+      </form>
 			<button type='button' id='info-close'>Close</button>
 		</div>
 	</div>

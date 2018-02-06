@@ -4,14 +4,14 @@ var ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 // When the user clicks on the button, open the modal
-//appends an "active" class to .info and .info-content when the "Open" button is clicked
+//appends an "active" class to .info and .question-content when the "Open" button is clicked
 var openModal = function(){
- $(".question-overlay, .info-content").addClass("active");
+ $(".question-overlay, .question-content").addClass("active");
 };
 
 //removes the "active" class off the modal when the "Close" button is clicked
 $("#info-close, .question-overlay").on("click", function(){
-  $(".question-overlay, .info-content").removeClass("active");
+  $(".question-overlay, .question-content").removeClass("active");
 });
 
 
@@ -19,61 +19,62 @@ $("#info-close, .question-overlay").on("click", function(){
 var questions = [{
   question: "An optimistic but unsuccessful metal detectorist spotted someone who looked like Carmen entering the Cave of the Crystals, home to some of the largest salt crystals in the world. If she is stealing crystals, where is she?",
   correctAnswer: 'Naica, Mexico',
-  incorrectChoices: []
+  incorrectAnswers: ['Ashgabat, Turkmenistan','Falkland Islands','Pittsburgh, United States']
 },
 {
   question: "A bored security guard briefly spotted a woman clutching blueprints at the Southwest corner of the Cristo Redentor statue. Where did this sighting happen?",
-  correctAnswer: 'Sao Paolo',
-  incorrectChoices: []
+  correctAnswer: 'Sao Paolo, Brazil',
+  incorrectAnswers: ['Naica, Mexico','Geneva, Switzerland','Falkland Islands']
 },
 {
   question: "While attempting to visit all 446 bridges in 1 day, an off duty firefighter may have seen Carmen trying to steal the historic nuts and bolts off the Liberty Bridge. Where was this incident?",
-  correctAnswer: 'Pittsburgh',
-  incorrectChoices: []
+  correctAnswer: 'Pittsburgh, United States',
+  incorrectAnswers: ['Okrug, Russia','Moscow, Russia','Ashgabat, Turkmenistan']
 },
 {
   question: "Right after pulling out of this train station, the second engineer on the The Fairy Queen steam locomotive thought he saw Carmen, while she attempted to pry historic engine parts loose. If Carmen really was on the world's oldest operating train, where was this station?",
   correctAnswer: 'Alwar, India',
+  incorrectAnswers: ['Reykjavik, Iceland','Naica, Mexico','Okrug, Russia']
 },
 {
   question: "A former army captain thought he saw Carmen atttemping to steal plans from the control area of the Hellisheidarvirkjun geothermal power plant. What does this power?",
-  correctAnswer: 'Helsinki',
-  incorrectChoices: []
+  correctAnswer: 'Reykjavik, Iceland',
+  incorrectAnswers: ['Geneva, Switzerland','Ashgabat, Turkmenistan','Falkland Islands']
 },
 {
-  question: "Both the United Kingdom and Argentina claim this place as theirs. A fishmonger might have spotted Carmen on a crumbling dock, attempting to fence 1 ton of whale blubber. Where was she trying to make a deal?",
+  question: "This southern hemisphere locale is still officially claimed by two different countries. A fishmonger might have spotted Carmen attempting to fence 1 ton of whale blubber. Where was she trying to make a deal?",
   correctAnswer: 'Falkland Islands',
-  incorrectChoices: []
+  incorrectAnswers: ['Sao Paolo, Brazil','Alwar, India','Grootfontein, Namibia']
 },
 {
   question: "Two seperate unnamed witnesses reportedly saw Carmen chip away at the 69 foot, solid gold statue of their president (atop a solid golid horse). If she stole that gold, where was this statue?",
-  correctAnswer: 'Ashgabat',
-  incorrectChoices: []
+  correctAnswer: 'Ashgabat, Turkmenistan',
+  incorrectAnswers: ['Moscow, Russia','Nevsehir Province, Turkey','Pittsburgh, United States']
 },
 {
   question: "A group of geologists visiting the 'Monument to the Conquerors of Space' may have witnessed Carmen attempting to pull the 351 foot titanium sculpture away with a rusty crane. She was unsuccessful. Where was this?",
-  correctAnswer: 'Moscow',
-  incorrectChoices: []
+  correctAnswer: 'Moscow, Russia',
+  incorrectAnswers: ['Nevsehir Province, Turkey','Pittsburgh, United States','Sao Paolo, Brazil']
 },
 {
-  question: "Enraged sheep farmers blocked the theft of over 1,000 innocent sheep by Carmen (possibly), who escaped through the world's longest rail tunnel. Where was she, allegly?",
-  correctAnswer: 'Switzerland',
-  incorrectChoices: []
+  question: "While inspecting a leaking pipe deep underground in the Hadron Collider, a physiscit may have seen Carmen shuffling away with several laser scopes. What city were they both underneath?"
+  correctAnswer: 'Geneva, Switzerland',
+  incorrectAnswers: ['Alwar, India','Reykjavik, Iceland','Moscow, Russia']
 },
 {
   question: "Spotted at night by a amature hot air balloon enthusisast, Carmen may have been digging up the world's largest meteroite: 'The Hoba'. Where did he spot her?",
-  correctAnswer: 'Namibia',
-  incorrectChoices: []
+  correctAnswer: 'Grootfontein, Namibia',
+  incorrectAnswers: ['Falkland Islands','Naica, Mexico','Okrug, Russia']
 },
 {
   question: "On a night shift, a janitor in the world's smallest power plant 'Bilibino Nuclear' thought he saw Carmen slithering out through an air vent. Where is this nuclear plant?",
   correctAnswer: 'Okrug, Russia',
-  incorrectChoices: []
+  incorrectAnswers: ['Nevsehir Province, Turkey','Moscow, Russia','Reykjavik, Iceland']
 },
 {
-  question: "During an ironic throwback rave in the underground city Derinkuyu, a slightly dazed student thought he saw Carmen stashing a mysetrious batterd trunk. Where is this fabeled city?",
-  correctAnswer: 'Turkey',
-  incorrectChoices: []
+  question: "During an ironic throwback rave in the underground city Derinkuyu, a slightly dazed student thought he saw Carmen stashing a mysterious battered trunk. What above-ground city is this ruin under?",
+  correctAnswer: 'Nevsehir Province, Turkey',
+  incorrectAnswers: ['Grootfontein, Namibia','Alwar, India','Naica, Mexico']
 }];
 
 
