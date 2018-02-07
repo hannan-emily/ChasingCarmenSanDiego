@@ -3,7 +3,9 @@ var ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
 $(document).ready(function() {
+
 //12 questions, each with correct and incorrect answers assigned
 var questionArray = [{
   question: "An optimistic but unsuccessful metal detectorist spotted someone who looked like Carmen entering 'The Cave of the Crystals', home to the world's of the largest salt crystals. If she is stealing crystals, where is she?",
@@ -190,14 +192,36 @@ $("#info-close").on("click", function(){
   $(".question-overlay, .question-content").removeClass("active");
 });
 
+var crash = false;
 
-//CANVAS
+//COLLISION DETECTION
+var collisionDetection = function(x1, y1, x2, y2,) {
+  //calculate the distance first
+  var xDistance = x2 - x1;
+  var yDistance = y2 - y1;
+  var crashZone = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));//this is how we do an exponent
+  if (crashZone < 40) {
+    crash = true;
+  }
+};
 
+//CHECKS FOR COLLISIONS WITH TREASURE
+var collisonCheck = function(question){
+  for (var i = 0; i < questionBoxes.length; i++) {
+    collisionDetection(detectiveBox.x, detectiveBox.y, questionBoxes[i].x,questionBoxes[i].y);
+    if (crash === true) {
+    crash = false;
+    console.log('crashed into questionbox');
+    openModal();
+    }
+  }
+};
 
 var animationLoop = function() {
   //CLEAR BOARD BEFORE DRAWING
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  
+  console.log(detectiveBox.x);
+
   //DRAW BOXES WITH IMAGES
   questionBoxes.forEach(function(questionBox) {
     ctx.drawImage(questionBox.img, questionBox.x, questionBox.y, 100, 100);
@@ -205,6 +229,8 @@ var animationLoop = function() {
 
   //DRAW DETECTIVE BOX
   ctx.drawImage(detectiveBox.img, detectiveBox.x, detectiveBox.y, 100, 100);
+
+  collisonCheck();
 };
 
 setInterval(animationLoop, 100);
@@ -216,6 +242,7 @@ setInterval(animationLoop, 100);
     }
   });
 
+    //MOVE DETECTIVE ICON AROUND CANVAS
     window.addEventListener('keydown', function(event) {
 
       if (event.keyCode === 38) {
@@ -234,6 +261,9 @@ setInterval(animationLoop, 100);
         detectiveBox.x += 10;
       }
     });
+
+
+
 
     //action for the questionbox click event
     questionBoxes.forEach(function(box, index) {
