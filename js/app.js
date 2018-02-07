@@ -70,7 +70,7 @@ var questionArray = [{
 // (clickable) boxes i'll use to apply a question to each
 var questionBoxes = [
   {
-    x: 100
+    x: 100,
     y: 50,
     img: $('#person1')[0]
   },
@@ -131,11 +131,12 @@ var questionBoxes = [
   },
 ];
 
-var detectiveBox = {
-  x: 100,
-  y: 100,
+//this will be the canvas element that interacts with the questionBoxes
+var detectiveBox = [{
+  x: 250,
+  y: 50,
   img: $('#detective')[0]
-}
+}];
 
 //display selected elements for this question
 var displayQuestion = function() {
@@ -158,17 +159,39 @@ $("#info-close").on("click", function(){
 });
 
 
-
 //CANVAS
 
 $(document).ready(function() {
 
   //DRAW BOXES WITH IMAGES
   questionBoxes.forEach(function(questionBox) {
-    // ctx.fillStyle = questionBox.color;
-    // ctx.fillRect(questionBox.x, questionBox.y, 100, 100)
     ctx.drawImage(questionBox.img, questionBox.x, questionBox.y, 100, 100);
   });
+
+  //DRAW DETECTIVE BOX
+  detectiveBox.forEach(function(detectiveBox) {
+    ctx.drawImage(detectiveBox.img, detectiveBox.x, detectiveBox.y, 100, 100);
+  });
+
+  //ADD EVENT LISTENER TO KEYSTROKES IN ORDER TO MOVE DETECTIVE BOX
+  var moveDetective = function(event) {
+    //up on the up key click
+    if (event.keyCode === 38) {
+      detectiveBox.y -= 10;
+    }
+    //down
+    if (event.keyCode === 40) {
+      detectiveBox.y += 10;
+    }
+    //left
+    if (event.keyCode === 37) {
+      detectiveBox.x -= 10;
+    }
+    //innerH
+    if (event.keyCode === 39) {
+      detectiveBox.x += 10;
+    }
+  };
 
   //add event listener to click to track where the mouse position is on the canvas
   canvas.addEventListener('click', function(e) {
@@ -191,5 +214,7 @@ $(document).ready(function() {
         }
     });
   });
-
+  document.addEventListener('DOMContentLoaded', function(event) {
+    window.addEventListener('keydown', moveDetective);
+  });
 });
