@@ -3,67 +3,79 @@ var ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-
+$(document).ready(function() {
 //12 questions, each with correct and incorrect answers assigned
 var questionArray = [{
   question: "An optimistic but unsuccessful metal detectorist spotted someone who looked like Carmen entering 'The Cave of the Crystals', home to the world's of the largest salt crystals. If she is stealing crystals, where is she?",
   correctAnswer: 'Naica, Mexico',
-  incorrectAnswers: ['Ashgabat, Turkmenistan','Falkland Islands','Pittsburgh, United States']
+  incorrectAnswers: ['Ashgabat, Turkmenistan','Falkland Islands','Pittsburgh, United States'],
+  answers:[]
 },
 {
   question: "A bored security guard briefly spotted a woman clutching blueprints at the southwest corner of the Cristo Redentor statue. Where did this sighting happen?",
   correctAnswer: 'Sao Paolo, Brazil',
-  incorrectAnswers: ['Naica, Mexico','Geneva, Switzerland','Falkland Islands']
+  incorrectAnswers: ['Naica, Mexico','Geneva, Switzerland','Falkland Islands'],
+  answers:[],
 },
 {
   question: "While attempting to visit all 446 bridges in 1 day, an off duty firefighter may have seen Carmen trying to steal the historic bolts off The Liberty Bridge. Where was this incident?",
   correctAnswer: 'Pittsburgh, United States',
-  incorrectAnswers: ['Okrug, Russia','Sao Paolo, Brazil','Ashgabat, Turkmenistan']
+  incorrectAnswers: ['Okrug, Russia','Sao Paolo, Brazil','Ashgabat, Turkmenistan'],
+  answers:[]
 },
 {
   question: "Right after pulling out of this train station, the second engineer on the world's oldest steam locomotive, 'The Fairy Queen', thought he saw Carmen attempting to pry valuable engine parts loose. If Carmen really was stealing parts, what city did that train just leave?",
   correctAnswer: 'Alwar, India',
-  incorrectAnswers: ['Reykjavik, Iceland','Naica, Mexico','Okrug, Russia']
+  incorrectAnswers: ['Reykjavik, Iceland','Naica, Mexico','Okrug, Russia'],
+  answers:[]
 },
 {
   question: "A former army captain thought he saw Carmen atttemping to steal plans from the control room of the Hellisheidarvirkjun geothermal power plant. What city does this power?",
   correctAnswer: 'Reykjavik, Iceland',
-  incorrectAnswers: ['Geneva, Switzerland','Ashgabat, Turkmenistan','Moscow, Russia']
+  incorrectAnswers: ['Geneva, Switzerland','Ashgabat, Turkmenistan','Moscow, Russia'],
+  answers:[]
 },
 {
   question: "This southern hemisphere locale is still officially claimed by two different countries. A fishmonger might have spotted Carmen attempting to fence 1 ton of whale blubber. Where was she trying to make a deal?",
   correctAnswer: 'Falkland Islands',
-  incorrectAnswers: ['Sao Paolo, Brazil','Alwar, India','Grootfontein, Namibia']
+  incorrectAnswers: ['Sao Paolo, Brazil','Alwar, India','Grootfontein, Namibia'],
+  answers:[]
 },
 {
   question: "Two seperate unnamed witnesses reportedly saw Carmen chip away at the 69 foot, solid gold statue of their president (atop a solid golid horse). If she stole that gold, where was this statue?",
   correctAnswer: 'Ashgabat, Turkmenistan',
-  incorrectAnswers: ['Moscow, Russia','Nevsehir Province, Turkey','Pittsburgh, United States']
+  incorrectAnswers: ['Moscow, Russia','Nevsehir Province, Turkey','Pittsburgh, United States'],
+  answers:[]
 },
 {
   question: "A group of geologists visiting the 'Monument to the Conquerors of Space' may have witnessed Carmen attempting to pull the 351 foot titanium sculpture away with a rusty crane. She was unsuccessful. Where was this?",
   correctAnswer: 'Moscow, Russia',
-  incorrectAnswers: ['Nevsehir Province, Turkey','Pittsburgh, United States','Sao Paolo, Brazil']
+  incorrectAnswers: ['Nevsehir Province, Turkey','Pittsburgh, United States','Sao Paolo, Brazil'],
+  answers:[]
 },
 {
   question: "While inspecting a leaking pipe deep underground in the Hadron Collider, a physiscit may have seen Carmen shuffling away with several laser scopes. What city were they both underneath?",
   correctAnswer: 'Geneva, Switzerland',
-  incorrectAnswers: ['Alwar, India','Reykjavik, Iceland','Moscow, Russia']
+  incorrectAnswers: ['Alwar, India','Reykjavik, Iceland','Moscow, Russia'],
+  answers:[]
 },
 {
   question: "Spotted at night by a amature hot air balloon enthusisast, Carmen may have been digging up the world's largest meteroite: 'The Hoba'. Where did he spot her?",
   correctAnswer: 'Grootfontein, Namibia',
-  incorrectAnswers: ['Falkland Islands','Naica, Mexico','Okrug, Russia']
+  incorrectAnswers: ['Falkland Islands','Naica, Mexico','Okrug, Russia'],
+  answers:[]
 },
 {
   question: "On a night shift, a janitor in the world's smallest power plant 'Bilibino Nuclear' thought he saw Carmen slithering out through an air vent. Where is this nuclear plant?",
   correctAnswer: 'Okrug, Russia',
-  incorrectAnswers: ['Nevsehir Province, Turkey','Moscow, Russia','Reykjavik, Iceland']
+  incorrectAnswers: ['Nevsehir Province, Turkey','Moscow, Russia','Reykjavik, Iceland'],
+  answers:[]
 },
 {
   question: "During an ironic throwback rave in the underground city Derinkuyu, a slightly dazed student thought he saw Carmen stashing a mysterious battered trunk. What above-ground city is this ruin under?",
   correctAnswer: 'Nevsehir Province, Turkey',
-  incorrectAnswers: ['Grootfontein, Namibia','Alwar, India','Naica, Mexico']
+  incorrectAnswers: ['Grootfontein, Namibia','Alwar, India','Naica, Mexico'],
+  answers:[]
 }];
 
 // 100 to 1000
@@ -132,11 +144,30 @@ var questionBoxes = [
 ];
 
 //this will be the canvas element that interacts with the questionBoxes
-var detectiveBox = [{
+var detectiveBox = {
   x: 250,
   y: 50,
   img: $('#detective')[0]
-}];
+};
+
+//modifying our answer array. combine 1 correct answer & 3 incorrect answers for each question into empty array "answers".
+//these should then be randomized later so the user cannot predict which multiple choice answer is correct.
+var answers = function() {
+  questionArray.forEach(function(item, index) {
+    // console.log(item);
+    item.answers = item.incorrectAnswers; //add all incorrect answers (in array) to empty answers array
+    item.answers.push(item.correctAnswer); //add in 1 more item to the answers array, "correct answer"
+    console.log(item.answers);
+  });
+
+  //randomize answer array key for each object in questionArray
+  // var ranAnswers = []      //temporary holder
+  // run randomize function   //randomize function
+  // answers = (ranAnswers);  // replace answer array with shuffled array = ranAnswers
+};
+
+// console.log(answers);
+// console.log(questionArray); //shoud show updated & filled in "answers" array. should not return empty answers arrays.
 
 //display selected elements for this question
 var displayQuestion = function() {
@@ -145,7 +176,8 @@ var displayQuestion = function() {
   // questionArray[0].answers.forEach(function(item, index) {
   //   $("#answer" + (index + 1) + "Radio").val(item);
   //   $("#answer" + (index + 1) + "Text").html(item);
-  };
+  // });
+};
 
 //modal for the question array. this appends an "active" class to .question-overlay and .question-content when the "Open" button is clicked
 var openModal = function(){
@@ -161,27 +193,31 @@ $("#info-close").on("click", function(){
 
 //CANVAS
 
-$(document).ready(function() {
 
+var animationLoop = function() {
+  //CLEAR BOARD BEFORE DRAWING
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
   //DRAW BOXES WITH IMAGES
   questionBoxes.forEach(function(questionBox) {
     ctx.drawImage(questionBox.img, questionBox.x, questionBox.y, 100, 100);
   });
 
   //DRAW DETECTIVE BOX
-  detectiveBox.forEach(function(detectiveBox) {
-    ctx.drawImage(detectiveBox.img, detectiveBox.x, detectiveBox.y, 100, 100);
-  });
+  ctx.drawImage(detectiveBox.img, detectiveBox.x, detectiveBox.y, 100, 100);
+};
 
-
+setInterval(animationLoop, 100);
   // add event listener to click to track where the mouse position is on the canvas
   canvas.addEventListener('click', function(e) {
     var pos = {
       x: e.clientX,
       y: e.clientY
     }
+  });
 
-    canvas.addEventListener('keydown', function(event) {
+    window.addEventListener('keydown', function(event) {
+
       if (event.keyCode === 38) {
         detectiveBox.y -= 10;
       }
@@ -197,7 +233,7 @@ $(document).ready(function() {
       if (event.keyCode === 39) {
         detectiveBox.x += 10;
       }
-    });  
+    });
 
     //action for the questionbox click event
     questionBoxes.forEach(function(box, index) {
@@ -213,5 +249,5 @@ $(document).ready(function() {
         }
     });
 
-  });
+
 });
