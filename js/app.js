@@ -66,82 +66,76 @@ var questionArray = [{
   incorrectAnswers: ['Grootfontein, Namibia','Alwar, India','Naica, Mexico']
 }];
 
-
+// 100 to 1000
 // (clickable) boxes i'll use to apply a question to each
 var questionBoxes = [
   {
-    x: 40,
-    y: 40,
-    color: 'rgb(255,0,0)',
+    x: 100
+    y: 50,
     img: $('#person1')[0]
   },
   {
-    x: 600,
-    y: 10,
-    color: 'rgb(255,0,0)',
+    x: 400,
+    y: 50,
     img: $('#person2')[0]
   },
   {
-    x: 250,
-    y: 140,
-    color: 'rgb(255,0,0)',
+    x: 700,
+    y: 50,
     img: $('#person3')[0]
   },
   {
-    x: 400,
-    y: 400,
-    color: 'rgb(255,0,0)',
+    x: 1000,
+    y: 50,
     img: $('#person4')[0]
   },
   {
-    x: 550,
-    y: 650,
-    color: 'rgb(255,0,0)',
+    x: 100,
+    y: 280,
     img: $('#person5')[0]
   },
   {
-    x: 850,
-    y: 500,
-    color: 'rgb(255,0,0)',
+    x: 400,
+    y: 280,
     img: $('#person6')[0]
   },
   {
-    x: 900,
-    y: 40,
-    color: 'rgb(255,0,0)',
+    x: 700,
+    y: 280,
     img: $('#person7')[0]
   },
   {
-    x: 600,
-    y: 350,
-    color: 'rgb(255,0,0)',
-    img: $('#person8')[0]
-  },
-  {
     x: 1000,
-    y: 700,
-    color: 'rgb(255,0,0)',
-    img: $('#person9')[0]
-  },
-  {
-    x: 10,
-    y: 700,
-    color: 'rgb(255,0,0)',
-    img: $('#person10')[0]
+    y: 280,
+    img: $('#person8')[0]
   },
   {
     x: 100,
     y: 500,
-    color: 'rgb(255,0,0)',
+    img: $('#person9')[0]
+  },
+  {
+    x: 400,
+    y: 500,
+    img: $('#person10')[0]
+  },
+  {
+    x: 700,
+    y: 500,
     img: $('#person11')[0]
   },
   {
-    x: 1010,
-    y: 300,
-    color: 'rgb(255,0,0)',
+    x: 1000,
+    y: 500,
     img: $('#person12')[0]
   },
 ];
+
+var detectiveBox = {
+  x: 100,
+  y: 100,
+  img: $('#detective')[0]
+}
 
 //display selected elements for this question
 var displayQuestion = function() {
