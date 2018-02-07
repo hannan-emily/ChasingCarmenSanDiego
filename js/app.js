@@ -72,62 +72,74 @@ var questionBoxes = [
   {
     x: 40,
     y: 40,
-    color: 'rgb(255,0,0)'
+    color: 'rgb(255,0,0)',
+    img: $('#person1')[0]
   },
   {
     x: 600,
     y: 10,
-    color: 'rgb(255,0,0)'
+    color: 'rgb(255,0,0)',
+    img: $('#person2')[0]
   },
   {
     x: 250,
     y: 140,
-    color: 'rgb(255,0,0)'
+    color: 'rgb(255,0,0)',
+    img: $('#person3')[0]
   },
   {
     x: 400,
     y: 400,
-    color: 'rgb(255,0,0)'
+    color: 'rgb(255,0,0)',
+    img: $('#person4')[0]
   },
   {
     x: 550,
     y: 650,
-    color: 'rgb(255,0,0)'
+    color: 'rgb(255,0,0)',
+    img: $('#person5')[0]
   },
   {
     x: 850,
     y: 500,
-    color: 'rgb(255,0,0)'
+    color: 'rgb(255,0,0)',
+    img: $('#person6')[0]
   },
   {
     x: 900,
     y: 40,
-    color: 'rgb(255,0,0)'
+    color: 'rgb(255,0,0)',
+    img: $('#person7')[0]
   },
   {
     x: 600,
     y: 350,
-    color: 'rgb(255,0,0)'
+    color: 'rgb(255,0,0)',
+    img: $('#person8')[0]
   },
   {
     x: 1000,
     y: 700,
-    color: 'rgb(255,0,0)'
+    color: 'rgb(255,0,0)',
+    img: $('#person9')[0]
   },
   {
     x: 10,
     y: 700,
-    color: 'rgb(255,0,0)'
+    color: 'rgb(255,0,0)',
+    img: $('#person10')[0]
   },
   {
     x: 100,
     y: 500,
-    color: 'rgb(255,0,0)'
+    color: 'rgb(255,0,0)',
+    img: $('#person11')[0]
   },
   {
     x: 1010,
     y: 300,
-    color: 'rgb(255,0,0)'
+    color: 'rgb(255,0,0)',
+    img: $('#person12')[0]
   },
 ];
 
@@ -152,32 +164,38 @@ $("#info-close").on("click", function(){
 });
 
 
-//canvas functions below
 
-//draw boxes
-questionBoxes.forEach(questionBox => {
-  ctx.fillStyle = questionBox.color;
-  ctx.fillRect(questionBox.x, questionBox.y, 100, 100)
-});
+//CANVAS
 
-//add event listener to click to track where the mouse position is on the canvas
-canvas.addEventListener('click', (e) => {
-  var pos = {
-    x: e.clientX,
-    y: e.clientY
-  };
+$(document).ready(function() {
 
-  //action for the questionbox click event
-  questionBoxes.forEach(function(box, index) {
-    var top = box.y;
-    var bottom = (box.y + 100);
-    var rightSide = (box.x + 100);
-    var leftSide = box.x;
-    if ((pos.x > leftSide) &&
-       (pos.x < rightSide) &&
-       (pos.y > top) &&
-       (pos.y < bottom)) {
-         openModal ();
-      }
+  //DRAW BOXES WITH IMAGES
+  questionBoxes.forEach(function(questionBox) {
+    // ctx.fillStyle = questionBox.color;
+    // ctx.fillRect(questionBox.x, questionBox.y, 100, 100)
+    ctx.drawImage(questionBox.img, questionBox.x, questionBox.y, 100, 100);
   });
+
+  //add event listener to click to track where the mouse position is on the canvas
+  canvas.addEventListener('click', function(e) {
+    var pos = {
+      x: e.clientX,
+      y: e.clientY
+    }
+
+    //action for the questionbox click event
+    questionBoxes.forEach(function(box, index) {
+      var top = box.y;
+      var bottom = (box.y + 100);
+      var rightSide = (box.x + 100);
+      var leftSide = box.x;
+      if ((pos.x > leftSide) &&
+         (pos.x < rightSide) &&
+         (pos.y > top) &&
+         (pos.y < bottom)) {
+           openModal ();
+        }
+    });
+  });
+
 });
