@@ -173,32 +173,31 @@ $(document).ready(function() {
     ctx.drawImage(detectiveBox.img, detectiveBox.x, detectiveBox.y, 100, 100);
   });
 
-  //ADD EVENT LISTENER TO KEYSTROKES IN ORDER TO MOVE DETECTIVE BOX
-  var moveDetective = function(event) {
-    //up on the up key click
-    if (event.keyCode === 38) {
-      detectiveBox.y -= 10;
-    }
-    //down
-    if (event.keyCode === 40) {
-      detectiveBox.y += 10;
-    }
-    //left
-    if (event.keyCode === 37) {
-      detectiveBox.x -= 10;
-    }
-    //innerH
-    if (event.keyCode === 39) {
-      detectiveBox.x += 10;
-    }
-  };
 
-  //add event listener to click to track where the mouse position is on the canvas
+  // add event listener to click to track where the mouse position is on the canvas
   canvas.addEventListener('click', function(e) {
     var pos = {
       x: e.clientX,
       y: e.clientY
     }
+
+    canvas.addEventListener('keydown', function(event) {
+      if (event.keyCode === 38) {
+        detectiveBox.y -= 10;
+      }
+      //down
+      if (event.keyCode === 40) {
+        detectiveBox.y += 10;
+      }
+      //left
+      if (event.keyCode === 37) {
+        detectiveBox.x -= 10;
+      }
+      //innerH
+      if (event.keyCode === 39) {
+        detectiveBox.x += 10;
+      }
+    });  
 
     //action for the questionbox click event
     questionBoxes.forEach(function(box, index) {
@@ -213,8 +212,6 @@ $(document).ready(function() {
            openModal ();
         }
     });
-  });
-  document.addEventListener('DOMContentLoaded', function(event) {
-    window.addEventListener('keydown', moveDetective);
+
   });
 });
