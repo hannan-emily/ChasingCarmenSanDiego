@@ -86,7 +86,8 @@ var questionBoxes = [
   {
     x: 100,
     y: 50,
-    img: $('#person1')[0]
+    img: $('#person1')[0],
+    answered: false
   },
   {
     x: 400,
@@ -159,7 +160,6 @@ var answers = function() {
     // console.log(item);
     item.answers = item.incorrectAnswers; //add all incorrect answers (in array) to empty answers array
     item.answers.push(item.correctAnswer); //add in 1 more item to the answers array, "correct answer"
-    console.log(item.answers);
   });
 
   //randomize answer array key for each object in questionArray
@@ -200,7 +200,7 @@ var collisionDetection = function(x1, y1, x2, y2,) {
   var xDistance = x2 - x1;
   var yDistance = y2 - y1;
   var crashZone = Math.sqrt(Math.pow(xDistance, 2) + Math.pow(yDistance, 2));//this is how we do an exponent
-  if (crashZone < 40) {
+  if (crashZone < 80) {
     crash = true;
   }
 };
@@ -211,7 +211,8 @@ var collisonCheck = function(question){
     collisionDetection(detectiveBox.x, detectiveBox.y, questionBoxes[i].x,questionBoxes[i].y);
     if (crash === true) {
     crash = false;
-    console.log('crashed into questionbox');
+    detectiveBox.x = 250;
+    detectiveBox.y = 50;
     openModal();
     }
   }
@@ -220,7 +221,6 @@ var collisonCheck = function(question){
 var animationLoop = function() {
   //CLEAR BOARD BEFORE DRAWING
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  console.log(detectiveBox.x);
 
   //DRAW BOXES WITH IMAGES
   questionBoxes.forEach(function(questionBox) {
