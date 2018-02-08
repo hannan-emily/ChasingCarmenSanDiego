@@ -199,18 +199,19 @@ var addCarmenClass = function() {
 
 //DISPLAY QUESTIONS & ANSWERS
 var displayQuestion = function() {
+  console.log(questionArray[turnCount].answers);
   $("#currentQuestion").text(questionArray[turnCount].question); //replace the text in html field with THIS question text
-  $("#answer" + 1 + "Text").html(questionArray[0].correctAnswer);
-  // answers();
-  // addCarmenClass();
-  // console.log(questionArray);
-  // shuffleAnswers();
-  // console.log(questionArray)
-  // questionArray[0].answers.forEach(function(item, index) {
-  //   $("#answer" + (index + 1) + "Radio").val(item);
-  //   $("#answer" + (index + 1) + "Text").html(item);
-  // });
+  $("#answer" + 1 + "Text").text(questionArray[turnCount].answers[0]); // text to display in UL
+  $("#answer" + 1 + "Radio").val(questionArray[turnCount].answers[0]); //value to assign, we'll check this against the corrrect answer later
+  $("#answer" + 2 + "Text").text(questionArray[turnCount].answers[1]);
+  $("#answer" + 2 + "Radio").val(questionArray[turnCount].answers[1]);
+  $("#answer" + 3 + "Text").text(questionArray[turnCount].answers[2]);
+  $("#answer" + 3 + "Radio").val(questionArray[turnCount].answers[2]);
+  $("#answer" + 4 + "Text").text(questionArray[turnCount].answers[3]);
+  $("#answer" + 4 + "Radio").val(questionArray[turnCount].answers[3]);
 };
+
+
 
 //modal for the question array. this appends an "active" class to .question-overlay and .question-content when the "Open" button is clicked
 var openModal = function(){
@@ -221,7 +222,7 @@ var openModal = function(){
 };
 
 //removes the "active" class off the modal when the "Close" button is clicked
-$("#info-close").on("click", function(){
+$("#question-close").on("click", function(){
   $(".question-overlay, .question-content").removeClass("active");
   turnCount++;
   console.log(turnCount);
