@@ -194,7 +194,7 @@ var shuffleAnswers = function() {
 var addCarmenClass = function() {
   var randomIndex = Math.floor((Math.random() * 11) + 1); // generate a random number for one of the 12 objects (0-11 in array)
   // console.log(randomIndex);
-  questionArray[randomIndex].carmen.push(true); //now add the winning class of carmen to the object at that index number
+  questionArray[randomIndex].carmen.push('true'); //now add the winning class of carmen to the object at that index number
   // console.log(questionArray);
   }
 
@@ -218,13 +218,19 @@ var checkQuestionWin = function() {
   var checked = $( "input[name=answer]:checked" ).val();
   if (checked === (questionArray[turnCount].correctAnswer)) {
     console.log('your answer is correct');
+    if (questionArray[turnCount].carmen(true)) { //if carmen is present on this question
+      console.log('you found carmen sandiego!');
+    }
+    else {
+      console.log('you got it right, but carmen was not here');
+    }
   } else {
     console.log('better luck next time!');
   };
 }
 
 //modal for the question array. this appends an "active" class to .question-overlay and .question-content when the "Open" button is clicked
-var openModal = function(){
+var openModal = function() {
  $(".question-overlay, .question-content").addClass("active");
  displayQuestion();
  answers();
