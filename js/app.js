@@ -185,16 +185,16 @@ var shuffleAnswers = function() {
       randomAnswers[i] = item.answers.splice(randomIndex, 1)[0];
     }
     item.answers = randomAnswers;
-    console.log(questionArray);
+    // console.log(questionArray);
   });
 }
 
 //SET CARMEN CONDITION TO TRUE (THE END GAME WIN CONDITION) FOR ONE RANDOM QUESTI0N
 var addCarmenClass = function() {
   var randomIndex = Math.floor((Math.random() * 11) + 1); // generate a random number for one of the 12 objects (0-11 in array)
-  console.log(randomIndex);
+  // console.log(randomIndex);
   questionArray[randomIndex].carmen.push(true); //now add the winning class of carmen to the object at that index number
-  console.log(questionArray);
+  // console.log(questionArray);
   }
 
 //DISPLAY QUESTIONS & ANSWERS
@@ -224,6 +224,7 @@ var openModal = function(){
 $("#info-close").on("click", function(){
   $(".question-overlay, .question-content").removeClass("active");
   turnCount++;
+  console.log(turnCount);
 });
 
 var crash = false;
@@ -247,7 +248,6 @@ var collisonCheck = function(question){
       crash = false;
       detectiveBox.x = 650;
       detectiveBox.y = 350;
-      console.log(turnCount);
       openModal();
     }
   }
