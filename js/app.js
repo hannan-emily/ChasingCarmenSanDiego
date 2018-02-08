@@ -262,7 +262,7 @@ var collisionDetection = function(x1, y1, x2, y2,) {
   }
 };
 
-//CHECKS FOR COLLISIONS WITH TREASURE
+//CHECKS FOR COLLISIONS WITH OBJECTS
 var collisonCheck = function(question){
   for (var i = 0; i < questionBoxes.length; i++) {
     collisionDetection(detectiveBox.x, detectiveBox.y, questionBoxes[i].x,questionBoxes[i].y);
@@ -290,6 +290,7 @@ var animationLoop = function() {
 
   collisonCheck();
 };
+
 
 setInterval(animationLoop, 100);
 

@@ -57,8 +57,31 @@ button {
 	filter: none;
 }
 
+.start-overlay{
+	position: absolute;
+  background-color: white;
+  width: 600px;
+	height: 400px;
+	top: 145px;
+  left: 380px;
+	margin: 0 auto;
+}
 
-.question-overlay, .continue-screen {
+.start-overlay.inactive {
+	visibility: hidden;
+}
+
+#start-game {
+  padding: 5px 15px;
+	background-color: white;
+	border: 4px solid black;
+	border-radius: 7px;
+	position: absolute;
+	bottom: 15px;
+	left: 150px;
+}
+
+.question-overlay, .continue-screen  {
 	visibility: hidden;
 	position: absolute;
   background-color: white;
