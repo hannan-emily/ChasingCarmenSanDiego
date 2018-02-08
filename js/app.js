@@ -90,7 +90,7 @@ var questionBoxes = [
     answered: false
   },
   {
-    x: 300,
+    x: 350,
     y: 50,
     img: $('#person2')[0]
   },
@@ -100,7 +100,7 @@ var questionBoxes = [
     img: $('#person3')[0]
   },
   {
-    x: 900,
+    x: 850,
     y: 50,
     img: $('#person4')[0]
   },
@@ -125,7 +125,7 @@ var questionBoxes = [
     img: $('#person8')[0]
   },
   {
-    x: 300,
+    x: 350,
     y: 500,
     img: $('#person9')[0]
   },
@@ -135,7 +135,7 @@ var questionBoxes = [
     img: $('#person10')[0]
   },
   {
-    x: 900,
+    x: 850,
     y: 500,
     img: $('#person11')[0]
   },
@@ -153,28 +153,36 @@ var detectiveBox = {
   img: $('#detective')[0]
 };
 
-//modifying our answer array. combine 1 correct answer & 3 incorrect answers for each question into empty array "answers".
-//these should then be randomized later so the user cannot predict which multiple choice answer is correct.
+//COLLECT ALL ANSWERS FOR EACH OBJECT INTO A NEW COMBINED ARRAY
 var answers = function() {
-  questionArray.forEach(function(item, index) {
-    // console.log(item);
+  questionArray.forEach(function(item) {
     item.answers = item.incorrectAnswers; //add all incorrect answers (in array) to empty answers array
     item.answers.push(item.correctAnswer); //add in 1 more item to the answers array, "correct answer"
   });
-
-  //randomize answer array key for each object in questionArray
-  // var ranAnswers = []      //temporary holder
-  // run randomize function   //randomize function
-  // answers = (ranAnswers);  // replace answer array with shuffled array = ranAnswers
+  shuffleAnswers();
 };
 
-// console.log(answers);
-// console.log(questionArray); //shoud show updated & filled in "answers" array. should not return empty answers arrays.
+//SHUFFLE COMBINED ANSWERS IN EACH ANSWER ARRAY
+var shuffleAnswers = function() {
+  questionArray.forEach(function(item) { //run this for every object in the questionArray
+    var randomAnswers = [];
+    for(var i = 0; i < 4; i++) {
+      var randomIndex = Math.round(Math.random() * (item.answers.length - 1));
+      randomAnswers[i] = item.answers.splice(randomIndex, 1)[0];
+    }
+    item.answers = randomAnswers;
+    console.log(questionArray);
+  });
+}
 
 //display selected elements for this question
 var displayQuestion = function() {
   $("#currentQuestion").text(questionArray[0].question); //replace the text in html field with THIS question text
   $("#answer" + 1 + "Text").html(questionArray[0].correctAnswer);
+  answers();
+  // console.log(questionArray);
+  // shuffleAnswers();
+  // console.log(questionArray)
   // questionArray[0].answers.forEach(function(item, index) {
   //   $("#answer" + (index + 1) + "Radio").val(item);
   //   $("#answer" + (index + 1) + "Text").html(item);
@@ -210,15 +218,16 @@ var collisonCheck = function(question){
   for (var i = 0; i < questionBoxes.length; i++) {
     collisionDetection(detectiveBox.x, detectiveBox.y, questionBoxes[i].x,questionBoxes[i].y);
     if (crash === true) {
-    crash = false;
-    detectiveBox.x = 600;
-    detectiveBox.y = 280;
-    openModal();
+      crash = false;
+      detectiveBox.x = 600;
+      detectiveBox.y = 280;
+      openModal();
     }
   }
 };
 
 var animationLoop = function() {
+
   //CLEAR BOARD BEFORE DRAWING
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -234,50 +243,40 @@ var animationLoop = function() {
 };
 
 setInterval(animationLoop, 100);
-  // add event listener to click to track where the mouse position is on the canvas
-  canvas.addEventListener('click', function(e) {
-    var pos = {
-      x: e.clientX,
-      y: e.clientY
+
+//MOVE DETECTIVE ICON AROUND CANVAS
+  window.addEventListener('keydown', function(event) {
+
+    if (event.keyCode === 38) {
+      detectiveBox.y -= 10;
+    }
+    //down
+    if (event.keyCode === 40) {
+      detectiveBox.y += 10;
+    }
+    //left
+    if (event.keyCode === 37) {
+      detectiveBox.x -= 10;
+    }
+    //innerH
+    if (event.keyCode === 39) {
+      detectiveBox.x += 10;
     }
   });
-
-    //MOVE DETECTIVE ICON AROUND CANVAS
-    window.addEventListener('keydown', function(event) {
-
-      if (event.keyCode === 38) {
-        detectiveBox.y -= 10;
-      }
-      //down
-      if (event.keyCode === 40) {
-        detectiveBox.y += 10;
-      }
-      //left
-      if (event.keyCode === 37) {
-        detectiveBox.x -= 10;
-      }
-      //innerH
-      if (event.keyCode === 39) {
-        detectiveBox.x += 10;
-      }
-    });
-
-
-
-
-    //action for the questionbox click event
-    questionBoxes.forEach(function(box, index) {
-      var top = box.y;
-      var bottom = (box.y + 100);
-      var rightSide = (box.x + 100);
-      var leftSide = box.x;
-      if ((pos.x > leftSide) &&
-         (pos.x < rightSide) &&
-         (pos.y > top) &&
-         (pos.y < bottom)) {
-           openModal ();
-        }
-    });
-
-
 });
+
+
+
+    // //action for the questionbox click event
+    // questionBoxes.forEach(function(box, index) {
+    //   var top = box.y;
+    //   var bottom = (box.y + 100);
+    //   var rightSide = (box.x + 100);
+    //   var leftSide = box.x;
+    //   if ((pos.x > leftSide) &&
+    //      (pos.x < rightSide) &&
+    //      (pos.y > top) &&
+    //      (pos.y < bottom)) {
+    //        openModal ();
+    //     }
+    // });
