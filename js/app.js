@@ -84,72 +84,72 @@ var questionArray = [{
 // (clickable) boxes i'll use to apply a question to each
 var questionBoxes = [
   {
-    x: 100,
+    x: 150,
     y: 50,
     img: $('#person1')[0],
     answered: false
   },
   {
-    x: 350,
+    x: 400,
     y: 50,
     img: $('#person2')[0]
   },
   {
-    x: 600,
+    x: 650,
     y: 50,
     img: $('#person3')[0]
   },
   {
-    x: 850,
+    x: 900,
     y: 50,
     img: $('#person4')[0]
   },
   {
-    x: 1100,
+    x: 1150,
     y: 50,
     img: $('#person5')[0]
   },
   {
-    x: 100,
-    y: 280,
+    x: 150,
+    y: 250,
     img: $('#person6')[0]
   },
   {
-    x: 1100,
-    y: 280,
+    x: 1150,
+    y: 250,
     img: $('#person7')[0]
   },
   {
-    x: 100,
+    x: 150,
     y: 500,
     img: $('#person8')[0]
   },
   {
-    x: 350,
+    x: 400,
     y: 500,
     img: $('#person9')[0]
   },
   {
-    x: 600,
+    x: 650,
     y: 500,
     img: $('#person10')[0]
   },
   {
-    x: 850,
+    x: 900,
     y: 500,
     img: $('#person11')[0]
   },
   {
-    x: 1100,
+    x: 1150,
     y: 500,
     img: $('#person12')[0]
   },
 ];
 
-//this will be the canvas element that interacts with the questionBoxes
+//CANVAS ELEMENT THAT INTERACTS WITH QUESTIONBOX ELEMENTS
 var detectiveBox = {
-  x: 600,
-  y: 280,
+  x: 650,
+  y: 250,
   img: $('#detective')[0]
 };
 
@@ -219,8 +219,8 @@ var collisonCheck = function(question){
     collisionDetection(detectiveBox.x, detectiveBox.y, questionBoxes[i].x,questionBoxes[i].y);
     if (crash === true) {
       crash = false;
-      detectiveBox.x = 600;
-      detectiveBox.y = 280;
+      detectiveBox.x = 650;
+      detectiveBox.y = 350;
       openModal();
     }
   }
