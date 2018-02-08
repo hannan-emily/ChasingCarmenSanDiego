@@ -159,6 +159,7 @@ var questionBoxes = [
 ];
 
 var turnCount = 0;
+var checked = ("");
 
 //CANVAS ELEMENT THAT INTERACTS WITH QUESTIONBOX ELEMENTS
 var detectiveBox = {
@@ -200,6 +201,7 @@ var addCarmenClass = function() {
 //DISPLAY QUESTIONS & ANSWERS
 var displayQuestion = function() {
   console.log(questionArray[turnCount].answers);
+  console.log(checked);
   $("#currentQuestion").text(questionArray[turnCount].question); //replace the text in html field with THIS question text
   $("#answer" + 1 + "Text").text(questionArray[turnCount].answers[0]); // text to display in UL
   $("#answer" + 1 + "Radio").val(questionArray[turnCount].answers[0]); //value to assign, we'll check this against the corrrect answer later
@@ -211,7 +213,15 @@ var displayQuestion = function() {
   $("#answer" + 4 + "Radio").val(questionArray[turnCount].answers[3]);
 };
 
-
+//CHECK FOR LEVEL/question WIN
+var checkQuestionWin = function() {
+  var checked = $( "input[name=answer]:checked" ).val();
+  if (checked === (questionArray[turnCount].correctAnswer)) {
+    console.log('your answer is correct');
+  } else {
+    console.log('better luck next time!');
+  };
+}
 
 //modal for the question array. this appends an "active" class to .question-overlay and .question-content when the "Open" button is clicked
 var openModal = function(){
@@ -220,6 +230,11 @@ var openModal = function(){
  answers();
  addCarmenClass();
 };
+
+//on the submit button, check to see if this question selection is a win or loss
+$("#question-submit").on("click", function(){
+  checkQuestionWin();
+});
 
 //removes the "active" class off the modal when the "Close" button is clicked
 $("#question-close").on("click", function(){
