@@ -1,10 +1,26 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// canvas.width = window.innerWidth;
+// canvas.height = window.innerHeight;
 
-// if !checked preventDefault
-// else allow functioni
+
+
+
+
+function resize() {
+	// Our canvas must cover full height of screen
+	// regardless of the resolution
+	var height = window.innerHeight;
+
+	// So we need to calculate the proper scaled width
+	// that should work well with every resolution
+	var ratio = canvas.width/canvas.height;
+	var width = height * ratio;
+
+	canvas.style.width = width+'px';
+	canvas.style.height = height+'px';
+}
+
 
 
 $(document).ready(function() {
@@ -17,6 +33,21 @@ $(document).ready(function() {
   var playerLife = 3;
   var player1Life = 3;
   var player2Life = 3;
+
+  //CANVAS RESIZE FUNCTION credit: http://cssdeck.com/labs/emcxdwuz
+  var resize = function() {
+  	// Our canvas must cover full height of screen
+  	// regardless of the resolution
+  	var height = window.innerHeight;
+
+  	// So we need to calculate the proper scaled width
+  	// that should work well with every resolution
+  	var ratio = canvas.width/canvas.height;
+  	var width = height * ratio;
+
+  	canvas.style.width = width+'px';
+  	canvas.style.height = height+'px';
+  }
 
   //START GAME FUNCTION. SETS LISTENERS, AND WILL CALL ANIMATION LOOP
   var startGame = function() {
@@ -245,7 +276,6 @@ $(document).ready(function() {
     } else {
       player1Life--;
       if (player1Life > 0) {
-        $('#modal1').modal('close');
         $('#modal2').modal('open');
         $(".modal-text").text("Oh snap. You lost a life. You have " + player1Life + "  lives of 3 left. Try again!");
       } else {
@@ -278,9 +308,8 @@ $(document).ready(function() {
     } else {
       player2Life--;
       if (player2Life > 0) {
-        $('#modal1').modal('close');
         $('#modal2').modal('open');
-        $(".modal-text").text("Oh snap. You lost a life. You have " + player2Life + "  lives of 3 left. Try again!");
+        $(".modal-text").text("Oh snap! Try Again. You lost a life. You have " + player2Life + "  lives of 3 left.");
       } else {
         $('#modal1').modal('close');
         $('#modal2').modal('open');
@@ -337,5 +366,6 @@ $(document).ready(function() {
 
     collisonCheck();
   };
-
+  window.addEventListener('load', resize, false);
+  window.addEventListener('resize', resize, false);
 });

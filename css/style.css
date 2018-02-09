@@ -7,25 +7,18 @@ body {
   background: url("../img/airport.png") center;
   background-size: cover;
   background-attachment: fixed;
-  /* font-family: 'Nanum Gothic Coding', monospace;
-  font-weight: 700; */
   font-size: 18px;
 
 }
 
 #canvas {
-  background-color: rgba(255, 255, 255, 0.5);
 }
 
 h1 {
-  /* font-family: 'Nanum Myeongjo', serif;
-  font-weight: 700; */
   font-size: 26px;
 }
 
 button {
-  /* font-family: 'Nanum Myeongjo', serif;
-  font-weight: 700; */
   font-size: 14px
 }
 
@@ -36,10 +29,6 @@ button {
 
 .image {
   display: none;
-}
-
-.icon.info {
-	filter: none;
 }
 
 .start-overlay{
@@ -58,44 +47,6 @@ button {
 
 #start-game {
   padding: 5px 15px;
-	background-color: white;
-	border: 4px solid black;
-	border-radius: 7px;
-	position: absolute;
-	bottom: 15px;
-	left: 150px;
-}
-
-.question-overlay, .continue-screen  {
-	visibility: hidden;
-	position: absolute;
-  background-color: white;
-  width: 600px;
-	height: 400px;
-	top: 145px;
-  left: 380px;
-	margin: 0 auto;
-}
-
-.question-overlay.active, .continue-screen.active {
-	/*displays info when "active" class is present*/
-	visibility: visible;
-	text-align: center;
-}
-
-.question-content, .continue-content {
-	/*Hides info content when there is no "active" class */
-	visibility: hidden;
-}
-
-.question-content.active, .continue-content.active {
-	/*Shows info content when "active" class is present */
-	visibility: visible;
-	margin: 10px;
-}
-
- #question-close {
-	padding: 5px 15px;
 	background-color: white;
 	border: 4px solid black;
 	border-radius: 7px;

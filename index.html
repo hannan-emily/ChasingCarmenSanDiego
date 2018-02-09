@@ -1,50 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo:400,700,800" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700" rel="stylesheet">
-  <title>Chasing Carmen San Diego</title>
-</head>
-<body>
 
-  <main>
-    <canvas id="canvas"></canvas>
+  <head>
+    <!-- icon credit: <a href="<a href="https://www.freepik.com/free-vector/colorful-collection-with-great-variety-of-avatars_1258263.htm">Designed by Freepik</a>">People vector created by Freepik</a> -->
+    <!-- <a href='https://www.freepik.com/free-vector/male-hats-collection_770803.htm'>Designed by Freepik</a> -->
+    <!-- <a href="https://www.freepik.com/free-vector/airport-icons-set_1531752.htm">Designed by Freepik</a> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo:400,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700" rel="stylesheet">
+    <title>Chasing Carmen San Diego</title>
+  </head>
 
+  <body>
+    <div class="row">
+      <div class="col s6"> </div>
+      <div class="col s6"> </div>
+    <header>
 
-<!-- icon credit: <a href="<a href="https://www.freepik.com/free-vector/colorful-collection-with-great-variety-of-avatars_1258263.htm">Designed by Freepik</a>">People vector created by Freepik</a> -->
-<!-- <a href='https://www.freepik.com/free-vector/male-hats-collection_770803.htm'>Designed by Freepik</a> -->
-<!-- <a href="https://www.freepik.com/free-vector/airport-icons-set_1531752.htm">Designed by Freepik</a> -->
-    <div class="start-overlay">
-      <button type='button' id='start-game'>Start Game</button>
-    </div>
-    <!-- <div class=containerQuestion>
-      <div class='question-overlay'>
-    		<div class='question-content'>
-          <h1 class="currentQuestion" id="currentQuestion">Question</h1>
-          <form id="question-form">
-            <input type="radio" class="radio" id="answer1Radio" name="answer" value="">
-            <label id="answer1Text" for="answer1"></label>
-              <br />
-            <input type="radio" class="radio" id="answer2Radio" name="answer" value="">
-            <label id="answer2Text" for="answer2"></label>
-              <br />
-            <input type="radio" class="radio" id="answer3Radio" name="answer" value="">
-            <label id="answer3Text" for="answer3"></label>
-              <br />
-            <input type="radio" class="radio" id="answer4Radio" name="answer" value="">
-            <label id="answer4Text" for="answer4"></label>
-          </form>
-    			<button type='button' id='question-close'>Close</button>
-          <button type='button' id='question-submit'>Submit</button>
-    		</div>
-    	</div>
-    </div> -->
+    <div class="row">
+      <canvas id="canvas" width="1400" height="700"></canvas>
 
-    <div id="modal1" class="modal">
+      <div class="start-overlay">
+        <button type='button' id='start-game'>Start Game</button>
+      </div>
+
+      <div id="modal1" class="modal">
         <div class="modal-content">
           <h1 class="currentQuestion" id="currentQuestion">Question</h1>
           <form id="question-form">
@@ -65,64 +48,66 @@
           <a href="#submit!" id="player1-submit" class="modal-action modal-close waves-effect waves-green btn-flat">Player 1 Submit</a>
           <a href="#submit!" id="player2-submit" class="modal-action modal-close waves-effect waves-green btn-flat">Player 2 Submit</a>
         </div>
-    </div>
+      </div>
 
-    <div id="modal2" class="modal">
+      <div id="modal2" class="modal">
         <div class="modal-content">
           <p class=modal-text>Text<p>
           </form>
         </div>
         <div class="modal-footer">
-          <a href="#close!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+          <a href="#close!" id="modal2close" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
+      </div>
+
     </div>
-  </main>
 
-  <div class="image">
-    <img id="person1" src="./img/person1.png">
-  </div>
-  <div class="image">
-    <img id="person2" src="./img/person2.png">
-  </div>
-  <div class="image">
-    <img id="person3" src="./img/person3.png">
-  </div>
-  <div class="image">
-    <img id="person4" src="./img/person4.png">
-  </div>
-  <div class="image">
-    <img id="person5" src="./img/person5.png">
-  </div>
-  <div class="image">
-    <img id="person6" src="./img/person6.png">
-  </div>
-  <div class="image">
-    <img id="person7" src="./img/person7.png">
-  </div>
-  <div class="image">
-    <img id="person8" src="./img/person8.png">
-  </div>
-  <div class="image">
-    <img id="person9" src="./img/person9.png">
-  </div>
-  <div class="image">
-    <img id="person10" src="./img/person10.png">
-  </div>
-  <div class="image">
-    <img id="person11" src="./img/person11.png">
-  </div>
-  <div class="image">
-    <img id="person12" src="./img/person12.png">
-  </div>
-  <div class="image">
-    <img id="detective" src="./img/detective.png">
-  </div>
+    <div class="image">
+      <img id="person1" src="./img/person1.png">
+    </div>
+    <div class="image">
+      <img id="person2" src="./img/person2.png">
+    </div>
+    <div class="image">
+      <img id="person3" src="./img/person3.png">
+    </div>
+    <div class="image">
+      <img id="person4" src="./img/person4.png">
+    </div>
+    <div class="image">
+      <img id="person5" src="./img/person5.png">
+    </div>
+    <div class="image">
+      <img id="person6" src="./img/person6.png">
+    </div>
+    <div class="image">
+      <img id="person7" src="./img/person7.png">
+    </div>
+    <div class="image">
+      <img id="person8" src="./img/person8.png">
+    </div>
+    <div class="image">
+      <img id="person9" src="./img/person9.png">
+    </div>
+    <div class="image">
+      <img id="person10" src="./img/person10.png">
+    </div>
+    <div class="image">
+      <img id="person11" src="./img/person11.png">
+    </div>
+    <div class="image">
+      <img id="person12" src="./img/person12.png">
+    </div>
+    <div class="image">
+      <img id="detective" src="./img/detective.png">
+    </div>
 
-  <script
-  src="http://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-  <script type="text/javascript" src="js/app-rev.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-</body>
+    <script
+    src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/app-rev.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  </body>
+  
 </html>
