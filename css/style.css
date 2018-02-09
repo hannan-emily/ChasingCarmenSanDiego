@@ -7,8 +7,8 @@ body {
   background: url("../img/airport.png") center;
   background-size: cover;
   background-attachment: fixed;
-  font-family: 'Nanum Gothic Coding', monospace;
-  font-weight: 700;
+  /* font-family: 'Nanum Gothic Coding', monospace;
+  font-weight: 700; */
   font-size: 18px;
 
 }
@@ -18,14 +18,14 @@ body {
 }
 
 h1 {
-  font-family: 'Nanum Myeongjo', serif;
-  font-weight: 700;
+  /* font-family: 'Nanum Myeongjo', serif;
+  font-weight: 700; */
   font-size: 26px;
 }
 
 button {
-  font-family: 'Nanum Myeongjo', serif;
-  font-weight: 700;
+  /* font-family: 'Nanum Myeongjo', serif;
+  font-weight: 700; */
   font-size: 14px
 }
 
@@ -36,21 +36,6 @@ button {
 
 .image {
   display: none;
-}
-
-#infoButton{
-	background-color: #D2F92A;
-	border-radius: 10px;
-	font-family: 'Press Start 2P', cursive;
-	padding: 3px 4px;
-	border: 3px #E9FA9E outset;
-	font-size: 8px;
-}
-
-#infoButton:hover {
-	cursor: pointer;
-	border: 3px #B1C45F inset;
-	background-color: #C1DC47;
 }
 
 .icon.info {
@@ -117,14 +102,4 @@ button {
 	position: absolute;
 	bottom: 15px;
 	left: 150px;
-}
-
-#question-submit {
-  padding: 5px 15px;
-	background-color: white;
-	border: 4px solid black;
-	border-radius: 7px;
-	position: absolute;
-	bottom: 15px;
-	left: 400px;
 }

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo:400,700,800" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding:400,700" rel="stylesheet">
@@ -10,18 +11,17 @@
 </head>
 <body>
 
+  <main>
     <canvas id="canvas"></canvas>
 
 
 <!-- icon credit: <a href="<a href="https://www.freepik.com/free-vector/colorful-collection-with-great-variety-of-avatars_1258263.htm">Designed by Freepik</a>">People vector created by Freepik</a> -->
 <!-- <a href='https://www.freepik.com/free-vector/male-hats-collection_770803.htm'>Designed by Freepik</a> -->
 <!-- <a href="https://www.freepik.com/free-vector/airport-icons-set_1531752.htm">Designed by Freepik</a> -->
-
     <div class="start-overlay">
       <button type='button' id='start-game'>Start Game</button>
     </div>
-
-    <div class=containerQuestion>
+    <!-- <div class=containerQuestion>
       <div class='question-overlay'>
     		<div class='question-content'>
           <h1 class="currentQuestion" id="currentQuestion">Question</h1>
@@ -42,7 +42,41 @@
           <button type='button' id='question-submit'>Submit</button>
     		</div>
     	</div>
+    </div> -->
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h1 class="currentQuestion" id="currentQuestion">Question</h1>
+          <form id="question-form">
+            <input type="radio" class="radio" id="answer1Radio" name="answer" value="">
+            <label id="answer1Text" for="answer1Radio"></label>
+              <br />
+            <input type="radio" class="radio" id="answer2Radio" name="answer" value="">
+            <label id="answer2Text" for="answer2Radio"></label>
+              <br />
+            <input type="radio" class="radio" id="answer3Radio" name="answer" value="">
+            <label id="answer3Text" for="answer3Radio"></label>
+              <br />
+            <input type="radio" class="radio" id="answer4Radio" name="answer" value="">
+            <label id="answer4Text" for="answer4Radio"></label>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#submit!" id="player1-submit" class="modal-action modal-close waves-effect waves-green btn-flat">Player 1 Submit</a>
+          <a href="#submit!" id="player2-submit" class="modal-action modal-close waves-effect waves-green btn-flat">Player 2 Submit</a>
+        </div>
     </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+          <p class=modal-text>Text<p>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a href="#close!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+  </main>
 
   <div class="image">
     <img id="person1" src="./img/person1.png">
@@ -89,5 +123,6 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
   <script type="text/javascript" src="js/app-rev.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </body>
 </html>

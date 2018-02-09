@@ -4,13 +4,15 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 $(document).ready(function() {
-
+  $('.modal').modal();
   //GLOBAL VARIABLES
   var turnCount = 0;
   var checked = ("");
   var crash = false;
   var startButton = $("#start-game");
-
+  var playerLife = 3;
+  var player1Life = 3;
+  var player2Life = 3;
 
   //START GAME FUNCTION. SETS LISTENERS, AND WILL CALL ANIMATION LOOP
   var startGame = function() {
@@ -27,6 +29,13 @@ $(document).ready(function() {
     answers(); // run shuffle function on answers for question
   });
   //VARIABLES I'LL NEED
+
+  var resetGame = function() {
+    var checked = ("");
+    var playerLife = 3;
+    var turnCount = 0;
+    startGame();
+  }
 
   //QUESTI0N DATA
   var questionArray = [{
@@ -230,41 +239,91 @@ $(document).ready(function() {
   };
 
   //CHECK FOR QUESTI0N WIN
-  var checkQuestionWin = function() {
+  var checkQuestionWin1 = function() {
     var selectedAnswer = $( "input[name=answer]:checked" ).val();
     if (selectedAnswer === (questionArray[turnCount].correctAnswer)) {
       console.log("you chose right");
       console.log($( "input[name=answer]:checked" ).val());
-      checkForCarmen();
+      checkForCarmen1();
       turnCount++;
     } else {
-      console.log("you chose wrong");
-      console.log($( "input[name=answer]:checked" ).val());
-      console.log('better luck next time!');
-      turnCount++;
+      player1Life--;
+      if (player1Life > 0) {
+        $('#modal1').modal('close');
+        $('#modal2').modal('open');
+        $(".modal-text").text("Oh snap. You lost a life. You have " + player1Life + "  lives of 3 left. Try again!");
+      } else {
+        $('#modal1').modal('close');
+        $('#modal2').modal('open');
+        $(".modal-text").text("You Lost!");
+        resetGame();
+      }
     };
   };
 
   //CHECK FOR GAME WIN CONDITION
-  var checkForCarmen = function() {
+  var checkForCarmen1 = function() {
     if (questionArray[turnCount].carmen[0] === "true") {
-      console.log('you found carmen sandiego');
+      $('#modal1').modal('close');
+      $('#modal2').modal('open');
+      $(".modal-text").text("Player 1 = You captured Carmen SanDiego!");
     } else {
-      console.log("carmen sandiego has fled! keep going.");
-      closeModal();
+      $('#modal1').modal('close');
+      $('#modal2').modal('open');
+      $(".modal-text").text("Correct! But Carmen SanDiego fled to another city! Keep going.");
+    };
+  };
+
+  var checkQuestionWin2 = function() {
+    var selectedAnswer = $( "input[name=answer]:checked" ).val();
+    if (selectedAnswer === (questionArray[turnCount].correctAnswer)) {
+      console.log("you chose right");
+      console.log($( "input[name=answer]:checked" ).val());
+      checkForCarmen2();
+      turnCount++;
+    } else {
+      player2Life--;
+      if (player2Life > 0) {
+        $('#modal1').modal('close');
+        $('#modal2').modal('open');
+        $(".modal-text").text("Oh snap. You lost a life. You have " + player2Life + "  lives of 3 left. Try again!");
+      } else {
+        $('#modal1').modal('close');
+        $('#modal2').modal('open');
+        $(".modal-text").text("You Lost!");
+        resetGame();
+      }
+    };
+  };
+  //CHECK FOR GAME WIN CONDITION
+  var checkForCarmen2 = function() {
+    if (questionArray[turnCount].carmen[0] === "true") {
+      $('#modal1').modal('close');
+      $('#modal2').modal('open');
+      $(".modal-text").text("Player 2 = You captured Carmen SanDiego!");
+    } else {
+      $('#modal1').modal('close');
+      $('#modal2').modal('open');
+      $(".modal-text").text("Correct! But Carmen SanDiego fled to another city! Keep going.");
     };
   };
 
   //WHEN COLLISON OCCURS, OPEN MODAL CONTAINING QUESTI0N
   var openModal = function() {
-   $(".question-overlay, .question-content").addClass("active");
+   $('#modal1').modal('open');// $(".question-overlay, .question-content").addClass("active");
    displayQuestion();
 
-   $("#question-submit").on("click", function(e) {
+   $("#player1-submit").on("click", function(e) {
      e.stopImmediatePropagation();
      // e.preventDefault();
-     console.log("THIS GOT CLICKED!!!!!!!!!!!!!!!!!!!!!!!!")
-     checkQuestionWin();
+     // console.log("THIS GOT CLICKED!!!!!!!!!!!!!!!!!!!!!!!!")
+     checkQuestionWin1();
+   });
+   $("#player2-submit").on("click", function(e) {
+     e.stopImmediatePropagation();
+     // e.preventDefault();
+     // console.log("THIS GOT CLICKED!!!!!!!!!!!!!!!!!!!!!!!!")
+     checkQuestionWin2();
    });
 
    //insert if question win, then check for carmen/game win
@@ -274,7 +333,6 @@ $(document).ready(function() {
   var closeModal = function() {
     $(".question-overlay, .question-content").removeClass("active");
   }
-
 
   //ANIMATION LOOP
   var animationLoop = function() {
