@@ -3,25 +3,18 @@ var ctx = canvas.getContext('2d');
 // canvas.width = window.innerWidth;
 // canvas.height = window.innerHeight;
 
-
-
-
-
+//RESIZE CANVAS FUNCTION TO ADD RESPONSIVNESS
+//SEE PAIRED EVENT LISTENERS AT END OF THIS FILE
 function resize() {
-	// Our canvas must cover full height of screen
-	// regardless of the resolution
+
 	var height = window.innerHeight;
 
-	// So we need to calculate the proper scaled width
-	// that should work well with every resolution
 	var ratio = canvas.width/canvas.height;
 	var width = height * ratio;
 
 	canvas.style.width = width+'px';
 	canvas.style.height = height+'px';
 }
-
-
 
 $(document).ready(function() {
   $('.modal').modal();
@@ -154,18 +147,18 @@ $(document).ready(function() {
 
   //OBSTACLE BOXES DATA
   var questionBoxes = [
-    {x: 150, y: 50, img: $('#person1')[0]},
-    {x: 400, y: 50, img: $('#person2')[0]},
-    {x: 650, y: 50, img: $('#person3')[0]},
-    {x: 900, y: 50, img: $('#person4')[0]},
-    {x: 1150, y: 50, img: $('#person5')[0]},
-    {x: 150, y: 250, img: $('#person6')[0]},
-    {x: 1150, y: 250, img: $('#person7')[0]},
-    {x: 150, y: 500, img: $('#person8')[0]},
-    {x: 400, y: 500, img: $('#person9')[0]},
-    {x: 650, y: 500, img: $('#person10')[0]},
-    {x: 900, y: 500, img: $('#person11')[0]},
-    {x: 1150, y: 500, img: $('#person12')[0]},
+    {x: 0, y: 250, img: $('#person1')[0]},
+    {x: 200, y: 250, img: $('#person2')[0]},
+    {x: 400, y: 250, img: $('#person3')[0]},
+    {x: 600, y: 250, img: $('#person4')[0]},
+    {x: 800, y: 250, img: $('#person5')[0]},
+    {x: 1000, y: 250, img: $('#person6')[0]},
+    {x: 0, y: 550, img: $('#person7')[0]},
+    {x: 200, y: 550, img: $('#person8')[0]},
+    {x: 400, y: 550, img: $('#person9')[0]},
+    {x: 600, y: 550, img: $('#person10')[0]},
+    {x: 800, y: 550, img: $('#person11')[0]},
+    {x: 1000, y: 550, img: $('#person12')[0]},
   ];
 
   //RANDOMLY ASSIGN THE WIN CONDITION (CARMEN CLASS) TO A RANDOM QUESTI0N
@@ -210,7 +203,7 @@ $(document).ready(function() {
   };
 
   //DETECTIVE DATA
-  var detectiveBox = {x: 650, y: 250, img: $('#detective')[0]};
+  var detectiveBox = {x: 500, y: 400, img: $('#detective')[0]};
 
   //DRAW DETECTIVE FUNCTION
   var detective = function() {
@@ -335,22 +328,18 @@ $(document).ready(function() {
   var openModal = function() {
    $('#modal1').modal('open');// $(".question-overlay, .question-content").addClass("active");
    displayQuestion();
-
      $("#player1-submit").on("click", function(e) {
        e.stopImmediatePropagation();
        checkQuestionWin1();
        $('.radio').prop('checked', false);
      });
-
      $("#player2-submit").on("click", function(e) {
        e.stopImmediatePropagation();
        checkQuestionWin2();
        $('.radio').prop('checked', false);
        // $('input[name=answer]:checked').removeAttr('checked');
      });
-
    };
-
 
   //ANIMATION LOOP
   var animationLoop = function() {
@@ -366,6 +355,7 @@ $(document).ready(function() {
 
     collisonCheck();
   };
+  //EVENT LISTENERS TO ADD RESPONSIVENESS TO CANVAS
   window.addEventListener('load', resize, false);
   window.addEventListener('resize', resize, false);
 });

@@ -12,6 +12,7 @@ body {
 }
 
 #canvas {
+
 }
 
 h1 {
@@ -25,6 +26,11 @@ button {
 #canvas {
   margin: 0 auto;
   text-align: center;
+}
+
+.row-header {
+  height: 200px
+  background-color: #0069B2;
 }
 
 .image {
