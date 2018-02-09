@@ -3,6 +3,10 @@ var ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+// if !checked preventDefault
+// else allow functioni
+
+
 $(document).ready(function() {
   $('.modal').modal();
   //GLOBAL VARIABLES
@@ -28,14 +32,8 @@ $(document).ready(function() {
     addCarmenClass(); //prep the question array for win condition
     answers(); // run shuffle function on answers for question
   });
-  //VARIABLES I'LL NEED
 
-  var resetGame = function() {
-    var checked = ("");
-    var playerLife = 3;
-    var turnCount = 0;
-    startGame();
-  }
+
 
   //QUESTI0N DATA
   var questionArray = [{
@@ -238,12 +236,10 @@ $(document).ready(function() {
     }
   };
 
-  //CHECK FOR QUESTI0N WIN
+  //CHECK FOR QUESTI0N WIN PLAYER 1
   var checkQuestionWin1 = function() {
     var selectedAnswer = $( "input[name=answer]:checked" ).val();
     if (selectedAnswer === (questionArray[turnCount].correctAnswer)) {
-      console.log("you chose right");
-      console.log($( "input[name=answer]:checked" ).val());
       checkForCarmen1();
       turnCount++;
     } else {
@@ -256,12 +252,11 @@ $(document).ready(function() {
         $('#modal1').modal('close');
         $('#modal2').modal('open');
         $(".modal-text").text("You Lost!");
-        resetGame();
       }
     };
   };
 
-  //CHECK FOR GAME WIN CONDITION
+  //CHECK FOR GAME WIN PLAYER 1
   var checkForCarmen1 = function() {
     if (questionArray[turnCount].carmen[0] === "true") {
       $('#modal1').modal('close');
@@ -274,11 +269,10 @@ $(document).ready(function() {
     };
   };
 
+  //CHECK QUESTI0N WIN FOR PLAYER 2
   var checkQuestionWin2 = function() {
     var selectedAnswer = $( "input[name=answer]:checked" ).val();
     if (selectedAnswer === (questionArray[turnCount].correctAnswer)) {
-      console.log("you chose right");
-      console.log($( "input[name=answer]:checked" ).val());
       checkForCarmen2();
       turnCount++;
     } else {
@@ -291,11 +285,11 @@ $(document).ready(function() {
         $('#modal1').modal('close');
         $('#modal2').modal('open');
         $(".modal-text").text("You Lost!");
-        resetGame();
       }
     };
   };
-  //CHECK FOR GAME WIN CONDITION
+
+  //CHECK FOR GAME WIN PLAYER 1
   var checkForCarmen2 = function() {
     if (questionArray[turnCount].carmen[0] === "true") {
       $('#modal1').modal('close');
@@ -313,26 +307,21 @@ $(document).ready(function() {
    $('#modal1').modal('open');// $(".question-overlay, .question-content").addClass("active");
    displayQuestion();
 
-   $("#player1-submit").on("click", function(e) {
-     e.stopImmediatePropagation();
-     // e.preventDefault();
-     // console.log("THIS GOT CLICKED!!!!!!!!!!!!!!!!!!!!!!!!")
-     checkQuestionWin1();
-   });
-   $("#player2-submit").on("click", function(e) {
-     e.stopImmediatePropagation();
-     // e.preventDefault();
-     // console.log("THIS GOT CLICKED!!!!!!!!!!!!!!!!!!!!!!!!")
-     checkQuestionWin2();
-   });
+     $("#player1-submit").on("click", function(e) {
+       e.stopImmediatePropagation();
+       checkQuestionWin1();
+       $('.radio').prop('checked', false);
+     });
 
-   //insert if question win, then check for carmen/game win
-  };
+     $("#player2-submit").on("click", function(e) {
+       e.stopImmediatePropagation();
+       checkQuestionWin2();
+       $('.radio').prop('checked', false);
+       // $('input[name=answer]:checked').removeAttr('checked');
+     });
 
-  //CLOSE MODAL IN ORDER TO ADVANCE TO NEXT QUESTI0N
-  var closeModal = function() {
-    $(".question-overlay, .question-content").removeClass("active");
-  }
+   };
+
 
   //ANIMATION LOOP
   var animationLoop = function() {
