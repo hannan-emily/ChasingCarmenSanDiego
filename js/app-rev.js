@@ -1,12 +1,13 @@
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext('2d');
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
+// var canvas = null;
+// var ctx = null;
+canvas = document.getElementById("canvas");
+ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-//RESIZE CANVAS FUNCTION TO ADD RESPONSIVNESS
-//SEE PAIRED EVENT LISTENERS AT END OF THIS FILE
+// RESIZE CANVAS FUNCTION TO ADD RESPONSIVNESS
+// SEE PAIRED EVENT LISTENERS AT END OF THIS FILE
 function resize() {
-
 	var height = window.innerHeight;
 
 	var ratio = canvas.width/canvas.height;
@@ -16,7 +17,13 @@ function resize() {
 	canvas.style.height = height+'px';
 }
 
+
+
 $(document).ready(function() {
+  // canvas = document.getElementById("canvas");
+  // ctx = canvas.getContext('2d');
+  // canvas.width = window.innerWidth;
+  // canvas.height = window.innerHeight;
   $('.modal').modal();
   //GLOBAL VARIABLES
   var turnCount = 0;
@@ -26,21 +33,22 @@ $(document).ready(function() {
   var playerLife = 3;
   var player1Life = 3;
   var player2Life = 3;
+  var removeObstacleIndex = 0
 
-  //CANVAS RESIZE FUNCTION credit: http://cssdeck.com/labs/emcxdwuz
-  var resize = function() {
-  	// Our canvas must cover full height of screen
-  	// regardless of the resolution
-  	var height = window.innerHeight;
-
-  	// So we need to calculate the proper scaled width
-  	// that should work well with every resolution
-  	var ratio = canvas.width/canvas.height;
-  	var width = height * ratio;
-
-  	canvas.style.width = width+'px';
-  	canvas.style.height = height+'px';
-  }
+  // //CANVAS RESIZE FUNCTION credit: http://cssdeck.com/labs/emcxdwuz
+  // var resize = function() {
+  // 	// Our canvas must cover full height of screen
+  // 	// regardless of the resolution
+  // 	var height = window.innerHeight;
+  //
+  // 	// So we need to calculate the proper scaled width
+  // 	// that should work well with every resolution
+  // 	var ratio = canvas.width/canvas.height;
+  // 	var width = height * ratio;
+  //
+  // 	canvas.style.width = width+'px';
+  // 	canvas.style.height = height+'px';
+  // }
 
   //START GAME FUNCTION. SETS LISTENERS, AND WILL CALL ANIMATION LOOP
   var startGame = function() {
@@ -147,18 +155,18 @@ $(document).ready(function() {
 
   //OBSTACLE BOXES DATA
   var questionBoxes = [
-    {x: 0, y: 250, img: $('#person1')[0]},
-    {x: 200, y: 250, img: $('#person2')[0]},
-    {x: 400, y: 250, img: $('#person3')[0]},
-    {x: 600, y: 250, img: $('#person4')[0]},
-    {x: 800, y: 250, img: $('#person5')[0]},
-    {x: 1000, y: 250, img: $('#person6')[0]},
-    {x: 0, y: 550, img: $('#person7')[0]},
-    {x: 200, y: 550, img: $('#person8')[0]},
-    {x: 400, y: 550, img: $('#person9')[0]},
-    {x: 600, y: 550, img: $('#person10')[0]},
-    {x: 800, y: 550, img: $('#person11')[0]},
-    {x: 1000, y: 550, img: $('#person12')[0]},
+    {x: 0, y: 200, img: $('#person1')[0]},
+    {x: 150, y: 200, img: $('#person2')[0]},
+    {x: 300, y: 200, img: $('#person3')[0]},
+    {x: 450, y: 200, img: $('#person4')[0]},
+    {x: 600, y: 200, img: $('#person5')[0]},
+    {x: 750, y: 200, img: $('#person6')[0]},
+    {x: 0, y: 500, img: $('#person7')[0]},
+    {x: 150, y: 500, img: $('#person8')[0]},
+    {x: 300, y: 500, img: $('#person9')[0]},
+    {x: 450, y: 500, img: $('#person10')[0]},
+    {x: 600, y: 500, img: $('#person11')[0]},
+    {x: 750, y: 500, img: $('#person12')[0]},
   ];
 
   //RANDOMLY ASSIGN THE WIN CONDITION (CARMEN CLASS) TO A RANDOM QUESTI0N
@@ -203,7 +211,7 @@ $(document).ready(function() {
   };
 
   //DETECTIVE DATA
-  var detectiveBox = {x: 500, y: 400, img: $('#detective')[0]};
+  var detectiveBox = {x: 375, y: 350, img: $('#detective')[0]};
 
   //DRAW DETECTIVE FUNCTION
   var detective = function() {
@@ -236,6 +244,13 @@ $(document).ready(function() {
     });
   };
 
+  //HElPER FUNCTION FOR COLLISON. RANDOMLY CHOOSE A NUMBER & REMOVE THAT OBSTACLE FROM ARRAY WHEN ANSWER IS CORRECT
+  var removeObstacle = function() {
+    var number = Math.floor((Math.random() * questionArray.length) + 1);
+    console.log(number);
+    removeObstacleIndex = number;
+  };
+
   //COLLISON DETECTION FUNCTION
   var collisionDetection = function(x1, y1, x2, y2,) {
     //calculate the distance first
@@ -253,7 +268,7 @@ $(document).ready(function() {
       collisionDetection(detectiveBox.x, detectiveBox.y, questionBoxes[i].x,questionBoxes[i].y);
       if (crash === true) {
         crash = false;
-        detectiveBox.x = 650;
+        detectiveBox.x = 375;
         detectiveBox.y = 350;
         openModal();
       }
@@ -266,6 +281,9 @@ $(document).ready(function() {
     if (selectedAnswer === (questionArray[turnCount].correctAnswer)) {
       checkForCarmen1();
       turnCount++;
+      questionBoxes.splice(removeObstacleIndex, 1);
+      console.log(removeObstacleIndex);
+      console.log(questionBoxes);
     } else {
       player1Life--;
       if (player1Life > 0) {
@@ -328,6 +346,7 @@ $(document).ready(function() {
   var openModal = function() {
    $('#modal1').modal('open');// $(".question-overlay, .question-content").addClass("active");
    displayQuestion();
+   removeObstacle();
      $("#player1-submit").on("click", function(e) {
        e.stopImmediatePropagation();
        checkQuestionWin1();
@@ -340,6 +359,7 @@ $(document).ready(function() {
        // $('input[name=answer]:checked').removeAttr('checked');
      });
    };
+
 
   //ANIMATION LOOP
   var animationLoop = function() {
@@ -355,7 +375,7 @@ $(document).ready(function() {
 
     collisonCheck();
   };
-  //EVENT LISTENERS TO ADD RESPONSIVENESS TO CANVAS
+  // //EVENT LISTENERS TO ADD RESPONSIVENESS TO CANVAS
   window.addEventListener('load', resize, false);
-  window.addEventListener('resize', resize, false);
+  window.addEventListener('resize', resize);
 });

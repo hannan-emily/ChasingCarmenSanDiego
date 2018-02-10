@@ -8,11 +8,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   font-size: 18px;
-
-}
-
-#canvas {
-
+  overflow: hidden;
 }
 
 h1 {
@@ -24,13 +20,18 @@ button {
 }
 
 #canvas {
+  display: block;
   margin: 0 auto;
-  text-align: center;
+}
+
+#sidebar {
+  background-color: white;
 }
 
 .row-header {
-  height: 200px
+  height: 50px;
   background-color: #0069B2;
+  color: white;
 }
 
 .image {
