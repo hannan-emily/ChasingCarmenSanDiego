@@ -57,7 +57,13 @@ nav li {
   margin: 0 auto;
 }
 
-#modal-win {
+#modal-win-player1 {
+  padding: 20px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+#modal-win-player2 {
   padding: 20px;
   width: 40%;
   margin: 0 auto;

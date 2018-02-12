@@ -293,7 +293,8 @@ $(document).ready(function() {
       $('#modal1').modal('close');
       $('#modal2').modal('open');
       $("#canvas-content").hide();
-      $("#modal-win").show();
+			$('#modal2').modal('close');
+      $("#modal-win-player1").show();
     } else {
       $('#modal1').modal('close');
       $('#modal2').modal('open');
@@ -306,6 +307,7 @@ $(document).ready(function() {
     var selectedAnswer = $( "input[name=answer]:checked" ).val();
     if (selectedAnswer === (questionArray[turnCount].correctAnswer)) {
       checkForCarmen2();
+			removeObstacle();
       turnCount++;
     } else {
       player2Life--;
@@ -326,7 +328,8 @@ $(document).ready(function() {
       $('#modal1').modal('close');
       $('#modal2').modal('open');
       $("#canvas-content").hide();
-      $("#modal-win").show();
+			$('#modal2').modal('close');
+      $("#modal-win-player2").show();
     } else {
       $('#modal1').modal('close');
       $('#modal2').modal('open');
