@@ -16,12 +16,7 @@ function resize() {
 }
 
 
-
 $(document).ready(function() {
-  // canvas = document.getElementById("canvas");
-  // ctx = canvas.getContext('2d');
-  // canvas.width = window.innerWidth;
-  // canvas.height = window.innerHeight;
   $('.modal').modal();
 
   //GLOBAL VARIABLES
@@ -44,7 +39,6 @@ $(document).ready(function() {
     addCarmenClass();//prep the question array for win condition
     $("#player1Life").text(player1Life);
     $("#player2Life").text(player2Life);
-    console.log(questionArray);
   };
 
   //CLICK TO RUN START GAME FUNCTION
@@ -192,7 +186,6 @@ $(document).ready(function() {
         randomAnswers[i] = item.answers.splice(randomIndex, 1)[0];
       }
       item.answers = randomAnswers;
-      // console.log(questionArray);
     });
   }
 
@@ -281,8 +274,6 @@ $(document).ready(function() {
       removeObstacle();
       turnCount++;
       questionBoxes.splice(removeObstacleIndex, 1);
-      console.log(removeObstacleIndex);
-      console.log(questionBoxes);
     } else {
       player1Life--;
       if (player1Life > 0) {
