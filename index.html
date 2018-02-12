@@ -7,29 +7,64 @@
     <!-- <a href="https://www.freepik.com/free-vector/airport-icons-set_1531752.htm">Designed by Freepik</a> -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Chasing Carmen San Diego</title>
   </head>
 
   <body>
+    <div class="container">
 
-      <div class="row">
-        <div class="col s2" id="sidebar">
-          <h1>player 1 life</h1>
-          <h1>player 2 life</h1>
-        </div>
-        <div class="col s10">
+      <nav>
+         <div class="nav-wrapper">
+           <!-- <a href="#" class="brand-logo right">Logo</a> -->
+           <ul id="nav-mobile" class="left hide-on-med-and-down">
+             <li>Player 1 Tickets:</li>
+             <li id="player1Life"></li>
+             <li>Player 2 Tickets:</li>
+             <li id="player2Life"></li>
+             <li><a class="waves-effect waves-light btn" id="start-game">Start the Chase</a></li>
+           </ul>
+         </div>
+      </nav>
+
+      <div class="row" id="canvas-content">
+        <div class="col s12">
           <canvas id="canvas" width="900" height="700"></canvas>
         </div>
       </div>
 
-      <footer class="row">
-        <div class="col s12">
-        <div class="start-overlay">
-          <button type='button' id='start-game'>Start Game</button>
+      <div class="row" class="start-overlay" id="start-overlay">
+        <div class="col s12 m7">
+          <div class="card large">
+            <div class="card-image">
+              <img src="./img/title.png">
+            </div>
+            <div class="card-content">
+              <p>International thief Carmen SanDiego has escaped, and she's after the world's biggest treasures. An airport full of witnesses have clues. Find Carmen by questioning witnesses. You have 3 tickets - answer 3 questions wrong, and Carmen escapes for good!</p>
+            </div>
+          </div>
         </div>
+      </div>
+
+
+      <footer>
+
+        <div id="modal-win" class="modal">
+          <div>
+            <h1>You Captured Carmen!</h1>
+            <p> Press the "Start the Chase" button up above to play again! </p>
+         </div>
         </div>
+
+         <div id="modal-lose" class="modal">
+           <div>
+             <h1>Carmen escaped! Better luck next time.</h1>
+             <p> Press the "Start the Chase" button up above to play again! </p>
+          </div>
+
+         </div>
 
         <div id="modal1" class="modal">
           <div class="modal-content">
@@ -55,12 +90,12 @@
         </div>
 
         <div id="modal2" class="modal">
-          <div class="modal-content">
-            <p class=modal-text>Text<p>
-            </form>
+          <div>
+            <h1>Oh Snap!</p>
+            <p class="modal-text"></p>
           </div>
           <div class="modal-footer">
-            <a href="#close!" id="modal2close" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            <a href="#close" class="modal-action modal-close waves-effect waves-green btn-flat">Try Again</a>
           </div>
         </div>
 
@@ -112,6 +147,8 @@
 
     <script type="text/javascript" src="js/app-rev.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    </div>
+  </div>
   </body>
 
 </html>

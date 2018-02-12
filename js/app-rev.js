@@ -1,5 +1,3 @@
-// var canvas = null;
-// var ctx = null;
 canvas = document.getElementById("canvas");
 ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
@@ -25,46 +23,47 @@ $(document).ready(function() {
   // canvas.width = window.innerWidth;
   // canvas.height = window.innerHeight;
   $('.modal').modal();
+
   //GLOBAL VARIABLES
   var turnCount = 0;
   var checked = ("");
   var crash = false;
   var startButton = $("#start-game");
-  var playerLife = 3;
+  var resetButton = $("#reset-game");
   var player1Life = 3;
   var player2Life = 3;
   var removeObstacleIndex = 0
 
-  // //CANVAS RESIZE FUNCTION credit: http://cssdeck.com/labs/emcxdwuz
-  // var resize = function() {
-  // 	// Our canvas must cover full height of screen
-  // 	// regardless of the resolution
-  // 	var height = window.innerHeight;
-  //
-  // 	// So we need to calculate the proper scaled width
-  // 	// that should work well with every resolution
-  // 	var ratio = canvas.width/canvas.height;
-  // 	var width = height * ratio;
-  //
-  // 	canvas.style.width = width+'px';
-  // 	canvas.style.height = height+'px';
-  // }
-
   //START GAME FUNCTION. SETS LISTENERS, AND WILL CALL ANIMATION LOOP
   var startGame = function() {
+    resetGame();
     window.addEventListener('keydown', moveDetective);
     setInterval(animationLoop, 100);
-    $(".start-overlay").addClass("inactive");
+    $("#canvas-content").show();
+    answers(); // run shuffle function on answers for question
+    addCarmenClass();//prep the question array for win condition
+    $("#player1Life").text(player1Life);
+    $("#player2Life").text(player2Life);
     console.log(questionArray);
   };
 
   //CLICK TO RUN START GAME FUNCTION
   startButton.on("click", function() {
     startGame();
-    addCarmenClass(); //prep the question array for win condition
-    answers(); // run shuffle function on answers for question
+    $("#start-overlay").hide();
   });
 
+  //RESET GAME
+  var resetGame = function () {
+    turnCount = 0;
+    checked = ("");
+    crash = false;
+    player1Life = 3;
+    player2Life = 3;
+    removeObstacleIndex = 0
+    $("#win-overlay").hide();
+    $("#lose-overlay").hide();
+  };
 
 
   //QUESTI0N DATA
@@ -244,10 +243,9 @@ $(document).ready(function() {
     });
   };
 
-  //HElPER FUNCTION FOR COLLISON. RANDOMLY CHOOSE A NUMBER & REMOVE THAT OBSTACLE FROM ARRAY WHEN ANSWER IS CORRECT
+  //HElPER FUNCTION FOR COLLISON. RANDOMLY CHOOSE A NUMBER & REMOVE THAT OBSTACLE FROM ARRAY WHEN QUESTI0N IS ANSWERED CORRECTLY
   var removeObstacle = function() {
-    var number = Math.floor((Math.random() * questionArray.length) + 1);
-    console.log(number);
+    var number = Math.floor((Math.random() * (12 - turnCount)) + 1);
     removeObstacleIndex = number;
   };
 
@@ -280,6 +278,7 @@ $(document).ready(function() {
     var selectedAnswer = $( "input[name=answer]:checked" ).val();
     if (selectedAnswer === (questionArray[turnCount].correctAnswer)) {
       checkForCarmen1();
+      removeObstacle();
       turnCount++;
       questionBoxes.splice(removeObstacleIndex, 1);
       console.log(removeObstacleIndex);
@@ -288,11 +287,11 @@ $(document).ready(function() {
       player1Life--;
       if (player1Life > 0) {
         $('#modal2').modal('open');
-        $(".modal-text").text("Oh snap. You lost a life. You have " + player1Life + "  lives of 3 left. Try again!");
+        $(".modal-text").text("You lost a life. You have " + player1Life + "  lives of 3 left. Try again!");
       } else {
         $('#modal1').modal('close');
-        $('#modal2').modal('open');
-        $(".modal-text").text("You Lost!");
+        $("#canvas-content").hide();
+        $("#modal-lose").show();
       }
     };
   };
@@ -302,7 +301,8 @@ $(document).ready(function() {
     if (questionArray[turnCount].carmen[0] === "true") {
       $('#modal1').modal('close');
       $('#modal2').modal('open');
-      $(".modal-text").text("Player 1 = You captured Carmen SanDiego!");
+      $("#canvas-content").hide();
+      $("#modal-win").show();
     } else {
       $('#modal1').modal('close');
       $('#modal2').modal('open');
@@ -320,11 +320,11 @@ $(document).ready(function() {
       player2Life--;
       if (player2Life > 0) {
         $('#modal2').modal('open');
-        $(".modal-text").text("Oh snap! Try Again. You lost a life. You have " + player2Life + "  lives of 3 left.");
+        $(".modal-text").text("Try Again. You lost a life. You have " + player2Life + "  lives of 3 left.");
       } else {
         $('#modal1').modal('close');
-        $('#modal2').modal('open');
-        $(".modal-text").text("You Lost!");
+        $("#canvas-content").hide();
+        $("#modal-lose").show();
       }
     };
   };
@@ -334,7 +334,8 @@ $(document).ready(function() {
     if (questionArray[turnCount].carmen[0] === "true") {
       $('#modal1').modal('close');
       $('#modal2').modal('open');
-      $(".modal-text").text("Player 2 = You captured Carmen SanDiego!");
+      $("#canvas-content").hide();
+      $("#modal-win").show();
     } else {
       $('#modal1').modal('close');
       $('#modal2').modal('open');
@@ -346,7 +347,6 @@ $(document).ready(function() {
   var openModal = function() {
    $('#modal1').modal('open');// $(".question-overlay, .question-content").addClass("active");
    displayQuestion();
-   removeObstacle();
      $("#player1-submit").on("click", function(e) {
        e.stopImmediatePropagation();
        checkQuestionWin1();
@@ -374,6 +374,11 @@ $(document).ready(function() {
     detective();
 
     collisonCheck();
+
+    $("#player1Life").text(player1Life);
+
+    $("#player2Life").text(player2Life);
+
   };
   // //EVENT LISTENERS TO ADD RESPONSIVENESS TO CANVAS
   window.addEventListener('load', resize, false);

@@ -1,3 +1,5 @@
+/* font-family: 'Special Elite', cursive; */
+
 html,body{
     margin:0;
     padding:0;
@@ -15,17 +17,59 @@ h1 {
   font-size: 26px;
 }
 
-button {
-  font-size: 14px
+
+p {
+  font-size: 15px;
 }
+
+nav {
+  background-color: #85972D;
+}
+
+nav li {
+  list-style: none;
+  margin: 0 20px;
+  padding: 0;
+  display: inline;
+  justify-content: space-around;
+  color: white;
+}
+
+.container .row {
+  margin: 0 auto;
+}
+
+
+#canvas-content {
+  display: none;
+}
+
 
 #canvas {
   display: block;
   margin: 0 auto;
 }
 
-#sidebar {
-  background-color: white;
+#modal2 {
+  padding: 20px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+#modal-win {
+  padding: 20px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+#modal-lose {
+  padding: 20px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+#start-game {
+  background-color: red;
 }
 
 .row-header {
@@ -36,28 +80,4 @@ button {
 
 .image {
   display: none;
-}
-
-.start-overlay{
-	position: absolute;
-  background-color: white;
-  width: 600px;
-	height: 400px;
-	top: 145px;
-  left: 380px;
-	margin: 0 auto;
-}
-
-.start-overlay.inactive {
-	visibility: hidden;
-}
-
-#start-game {
-  padding: 5px 15px;
-	background-color: white;
-	border: 4px solid black;
-	border-radius: 7px;
-	position: absolute;
-	bottom: 15px;
-	left: 150px;
 }
