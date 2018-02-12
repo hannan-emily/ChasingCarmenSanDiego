@@ -82,3 +82,7 @@ nav li {
 .image {
   display: none;
 }
+
+label {
+  color: black;
+}
