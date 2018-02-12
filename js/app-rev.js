@@ -62,70 +62,70 @@ $(document).ready(function() {
 
   //QUESTI0N DATA
   var questionArray = [{
-    question: "An optimistic but unsuccessful metal detectorist spotted someone who looked like Carmen entering 'The Cave of the Crystals', home to the world's of the largest salt crystals. If she is stealing crystals, where is she?",
+    question: "Carmen may have entered 'The Cave of the Crystals' to steal the world's largest salt crystals. Where is this cave?",
     correctAnswer: 'Naica, Mexico',
     incorrectAnswers: ['Ashgabat, Turkmenistan','Falkland Islands','Pittsburgh, United States'],
     answers:[],
     carmen:[]
   },
   {
-    question: "A bored security guard briefly spotted a woman clutching blueprints at the southwest corner of the Cristo Redentor statue. Where did this sighting happen?",
+    question: "A bored security guard spotted a woman clutching blueprints at the Cristo Redentor statue. Where did this sighting happen?",
     correctAnswer: 'Sao Paolo, Brazil',
     incorrectAnswers: ['Naica, Mexico','Geneva, Switzerland','Falkland Islands'],
     answers:[],
     carmen:[]
   },
   {
-    question: "While attempting to visit all 446 bridges in 1 day, an off duty firefighter may have seen Carmen trying to steal the historic bolts off The Liberty Bridge. Where was this incident?",
+    question: "While attempting to visit all 446 bridges in 1 day, an off duty firefighter may have seen Carmen trying to steal bolts off The Liberty Bridge. Where was this incident?",
     correctAnswer: 'Pittsburgh, United States',
     incorrectAnswers: ['Okrug, Russia','Sao Paolo, Brazil','Ashgabat, Turkmenistan'],
     answers:[],
     carmen:[]
   },
   {
-    question: "Right after pulling out of this train station, the second engineer on the world's oldest steam locomotive, 'The Fairy Queen', thought he saw Carmen attempting to pry valuable engine parts loose. If Carmen really was stealing parts, what city did that train just leave?",
+    question: "Right after pulling out of this train station, on the world's oldest working train 'The Fairy Queen', Carmen may have been stealing valuable engine parts. What city did that train just leave?",
     correctAnswer: 'Alwar, India',
     incorrectAnswers: ['Reykjavik, Iceland','Naica, Mexico','Okrug, Russia'],
     answers:[],
     carmen:[]
   },
   {
-    question: "A former army captain thought he saw Carmen atttemping to steal plans from the control room of the Hellisheidarvirkjun geothermal power plant. What city does this power?",
+    question: "A former army captain thought he saw Carmen in the control room of the Hellisheidarvirkjun geothermal power plant. What city does this power?",
     correctAnswer: 'Reykjavik, Iceland',
     incorrectAnswers: ['Geneva, Switzerland','Ashgabat, Turkmenistan','Moscow, Russia'],
     answers:[],
     carmen:[]
   },
   {
-    question: "This southern hemisphere locale is still officially claimed by two different countries. A fishmonger might have spotted Carmen attempting to fence 1 ton of whale blubber. Where was she trying to make a deal?",
+    question: "This locale is still officially claimed by two different countries. A fishmonger said Carmen tried to fence 1 ton of whale blubber. Where were they?",
     correctAnswer: 'Falkland Islands',
     incorrectAnswers: ['Sao Paolo, Brazil','Alwar, India','Grootfontein, Namibia'],
     answers:[],
     carmen:[]
   },
   {
-    question: "Two seperate unnamed witnesses reportedly saw Carmen chip away at the 69 foot, solid gold statue of their president (atop a solid golid horse). If she stole that gold, where was this statue?",
+    question: "Two seperate witnesses reported Carmen stealing a 69 foot, solid gold statue of their president. If she stole that gold, where was this statue?",
     correctAnswer: 'Ashgabat, Turkmenistan',
     incorrectAnswers: ['Moscow, Russia','Nevsehir Province, Turkey','Pittsburgh, United States'],
     answers:[],
     carmen:[]
   },
   {
-    question: "A group of geologists visiting the 'Monument to the Conquerors of Space' may have witnessed Carmen attempting to pull the 351 foot titanium sculpture away with a rusty crane. She was unsuccessful. Where was this?",
+    question: "A group of geologists visiting the 'Monument to the Conquerors of Space' may have seen Carmen attempting to pull the 351 foot titanium out. She was unsuccessful. Where was this?",
     correctAnswer: 'Moscow, Russia',
     incorrectAnswers: ['Nevsehir Province, Turkey','Pittsburgh, United States','Sao Paolo, Brazil'],
     answers:[],
     carmen:[]
   },
   {
-    question: "While inspecting a leaking pipe deep underground in the Hadron Collider, a physiscit may have seen Carmen shuffling away with several laser scopes. What city were they both underneath?",
+    question: "While inspecting a leaking pipe deep underground in the Hadron Collider, Carmen may have stolen several laser scopes. What city is this underneath?",
     correctAnswer: 'Geneva, Switzerland',
     incorrectAnswers: ['Alwar, India','Reykjavik, Iceland','Moscow, Russia'],
     answers:[],
     carmen:[]
   },
   {
-    question: "Spotted at night by a amature hot air balloon enthusisast, Carmen may have been digging up the world's largest meteroite: 'The Hoba'. Where did he spot her?",
+    question: "Spotted at night by a hot air balloonist, Carmen may have been digging up the world's largest meteroite: 'The Hoba'. Where was she spotted?",
     correctAnswer: 'Grootfontein, Namibia',
     incorrectAnswers: ['Falkland Islands','Naica, Mexico','Okrug, Russia'],
     answers:[],
@@ -139,7 +139,7 @@ $(document).ready(function() {
     carmen:[]
   },
   {
-    question: "During an ironic throwback rave in the underground city Derinkuyu, a slightly dazed student thought he saw Carmen stashing a mysterious battered trunk. What above-ground city is this ruin under?",
+    question: "During an ironic rave in the underground city Derinkuyu, a slightly dazed student thought he saw Carmen. What above-ground city is this ruin under?",
     correctAnswer: 'Nevsehir Province, Turkey',
     incorrectAnswers: ['Grootfontein, Namibia','Alwar, India','Naica, Mexico'],
     answers:[],
