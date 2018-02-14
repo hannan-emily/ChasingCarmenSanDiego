@@ -31,7 +31,6 @@ $(document).ready(function() {
 
   //START GAME FUNCTION. SETS LISTENERS, AND WILL CALL ANIMATION LOOP
   var startGame = function() {
-    resetGame();
     window.addEventListener('keydown', moveDetective);
     setInterval(animationLoop, 100);
     $("#canvas-content").show();
@@ -44,7 +43,9 @@ $(document).ready(function() {
   //CLICK TO RUN START GAME FUNCTION
   startButton.on("click", function() {
     startGame();
+		resetGame();
     $("#start-overlay").hide();
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
   });
 
   //RESET GAME

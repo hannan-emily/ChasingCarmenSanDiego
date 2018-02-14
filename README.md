@@ -15,6 +15,12 @@ This is two-player game so no one is left out of the fun.
 
 ## Development
 
+### Technologies
+jQuery
+HTML5 Canvas
+Materialize
+
+
 ### Premise
 This game needed to fit these requirements:
 
