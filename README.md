@@ -4,9 +4,9 @@
 
 *Chasing Carmen SanDeigo* is a delightful new trivia game that pits you against that international thief, Carmen SanDiego.
 
-Obscure questions? Yep! Totally frustrating if you don't know why Naica, Mexico is famous? You betcha.
+Obscure questions? Yep! Totally frustrating if you don't know why Naica, Mexico is famous? You betcha. Interrogate enough witnesses in this airport setting, and you're bound to catch Ms. SanDiego in the end.
 
-Interrogate enough witnesses in this airport setting, and you're bound to catch Ms. SanDiego in the end.
+A delightfully fun HTML5 canvas game for desktop.
 
 This is two-player game so no one is left out of the fun.
 
@@ -16,9 +16,11 @@ This is two-player game so no one is left out of the fun.
 ## Development
 
 ### Technologies
-jQuery
-HTML5 Canvas
-Materialize
+* CSS
+* HTML5 Canvas
+* jQuery
+* JavaScript
+* Materialize
 
 
 ### Premise
