@@ -1,6 +1,6 @@
 # Chasing Carmen SanDiego
 
-[**Live Game Demo **](https://hannan-emily.github.io/ChasingCarmenSanDiego)<br>
+### [**Live Game Demo **](https://hannan-emily.github.io/ChasingCarmenSanDiego)<br>
 
 *Chasing Carmen SanDeigo* is a delightful new trivia game that pits you against that international thief, Carmen SanDiego.
 
