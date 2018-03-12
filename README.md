@@ -2,7 +2,7 @@
 
 ### [**Live Game Demo **](https://hannan-emily.github.io/ChasingCarmenSanDiego)<br>
 
-*Chasing Carmen SanDeigo* is a delightful new trivia game that pits you against that international thief, Carmen SanDiego.
+*Chasing Carmen SanDiego* is a delightful new trivia game that pits you against that international thief, Carmen SanDiego.
 
 Obscure questions? Yep! Totally frustrating if you don't know why Naica, Mexico is famous? You betcha. Interrogate enough witnesses in this airport setting, and you're bound to catch Ms. SanDiego in the end.
 
